@@ -5,8 +5,10 @@ __pycache__/
 venv/
 env/
 
-# App data (SRS progress database)
-data/
+# App data (SRS progress database) — root-level runtime dir only.
+# NOTE: leading slash matters. A bare `data/` would also match backend/data/,
+# which holds the language content that must ship in the repo and image.
+/data/
 *.db
 
 # OS / editor

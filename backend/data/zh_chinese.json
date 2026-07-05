@@ -1,0 +1,82 @@
+{
+  "code": "zh",
+  "name": "Mandarin",
+  "native_name": "普通話",
+  "flag": "🇨🇳",
+  "speech_lang": "zh-CN",
+  "has_reading": true,
+  "reading_label": "Pinyin",
+  "decks": [
+    {
+      "id": "greetings",
+      "name": "Greetings & Basics",
+      "description": "Essential Mandarin openers.",
+      "cards": [
+        {"id": "zh-g-01", "native": "你好", "reading": "nǐ hǎo", "translation": "Hello"},
+        {"id": "zh-g-02", "native": "早上好", "reading": "zǎoshang hǎo", "translation": "Good morning"},
+        {"id": "zh-g-03", "native": "晚上好", "reading": "wǎnshang hǎo", "translation": "Good evening"},
+        {"id": "zh-g-04", "native": "你好吗？", "reading": "nǐ hǎo ma?", "translation": "How are you?"},
+        {"id": "zh-g-05", "native": "我很好", "reading": "wǒ hěn hǎo", "translation": "I'm fine"},
+        {"id": "zh-g-06", "native": "你叫什么名字？", "reading": "nǐ jiào shénme míngzi?", "translation": "What's your name?"},
+        {"id": "zh-g-07", "native": "我叫...", "reading": "wǒ jiào...", "translation": "My name is..."},
+        {"id": "zh-g-08", "native": "很高兴认识你", "reading": "hěn gāoxìng rènshi nǐ", "translation": "Nice to meet you"},
+        {"id": "zh-g-09", "native": "谢谢", "reading": "xièxie", "translation": "Thank you"},
+        {"id": "zh-g-10", "native": "不客气", "reading": "bú kèqi", "translation": "You're welcome"},
+        {"id": "zh-g-11", "native": "请", "reading": "qǐng", "translation": "Please"},
+        {"id": "zh-g-12", "native": "对不起", "reading": "duìbuqǐ", "translation": "Sorry"},
+        {"id": "zh-g-13", "native": "再见", "reading": "zàijiàn", "translation": "Goodbye"},
+        {"id": "zh-g-14", "native": "是 / 不是", "reading": "shì / bú shì", "translation": "Yes / No (is / is not)"},
+        {"id": "zh-g-15", "native": "没关系", "reading": "méi guānxi", "translation": "It's okay / No problem"}
+      ]
+    },
+    {
+      "id": "numbers",
+      "name": "Numbers 1–10",
+      "description": "Counting in Mandarin.",
+      "cards": [
+        {"id": "zh-n-01", "native": "一", "reading": "yī", "translation": "one"},
+        {"id": "zh-n-02", "native": "二", "reading": "èr", "translation": "two"},
+        {"id": "zh-n-03", "native": "三", "reading": "sān", "translation": "three"},
+        {"id": "zh-n-04", "native": "四", "reading": "sì", "translation": "four"},
+        {"id": "zh-n-05", "native": "五", "reading": "wǔ", "translation": "five"},
+        {"id": "zh-n-06", "native": "六", "reading": "liù", "translation": "six"},
+        {"id": "zh-n-07", "native": "七", "reading": "qī", "translation": "seven"},
+        {"id": "zh-n-08", "native": "八", "reading": "bā", "translation": "eight"},
+        {"id": "zh-n-09", "native": "九", "reading": "jiǔ", "translation": "nine"},
+        {"id": "zh-n-10", "native": "十", "reading": "shí", "translation": "ten"}
+      ]
+    },
+    {
+      "id": "food",
+      "name": "Food & Drink",
+      "description": "Eat and drink your way around.",
+      "cards": [
+        {"id": "zh-f-01", "native": "水", "reading": "shuǐ", "translation": "water"},
+        {"id": "zh-f-02", "native": "茶", "reading": "chá", "translation": "tea"},
+        {"id": "zh-f-03", "native": "咖啡", "reading": "kāfēi", "translation": "coffee"},
+        {"id": "zh-f-04", "native": "米饭", "reading": "mǐfàn", "translation": "cooked rice"},
+        {"id": "zh-f-05", "native": "面条", "reading": "miàntiáo", "translation": "noodles"},
+        {"id": "zh-f-06", "native": "鸡肉", "reading": "jīròu", "translation": "chicken"},
+        {"id": "zh-f-07", "native": "我饿了", "reading": "wǒ è le", "translation": "I'm hungry"},
+        {"id": "zh-f-08", "native": "很好吃", "reading": "hěn hǎochī", "translation": "It's delicious"},
+        {"id": "zh-f-09", "native": "买单", "reading": "mǎidān", "translation": "The check, please"},
+        {"id": "zh-f-10", "native": "我要一杯咖啡", "reading": "wǒ yào yì bēi kāfēi", "translation": "I want a coffee"}
+      ]
+    },
+    {
+      "id": "phrases",
+      "name": "Everyday Phrases",
+      "description": "Survival Mandarin for real life.",
+      "cards": [
+        {"id": "zh-p-01", "native": "我不懂", "reading": "wǒ bù dǒng", "translation": "I don't understand"},
+        {"id": "zh-p-02", "native": "你会说英语吗？", "reading": "nǐ huì shuō yīngyǔ ma?", "translation": "Do you speak English?"},
+        {"id": "zh-p-03", "native": "洗手间在哪里？", "reading": "xǐshǒujiān zài nǎlǐ?", "translation": "Where is the bathroom?"},
+        {"id": "zh-p-04", "native": "多少钱？", "reading": "duōshao qián?", "translation": "How much is it?"},
+        {"id": "zh-p-05", "native": "请帮我", "reading": "qǐng bāng wǒ", "translation": "Please help me"},
+        {"id": "zh-p-06", "native": "我会说一点中文", "reading": "wǒ huì shuō yìdiǎn zhōngwén", "translation": "I speak a little Chinese"},
+        {"id": "zh-p-07", "native": "请再说一遍", "reading": "qǐng zài shuō yí biàn", "translation": "Please say it again"},
+        {"id": "zh-p-08", "native": "我在学中文", "reading": "wǒ zài xué zhōngwén", "translation": "I'm learning Chinese"}
+      ]
+    }
+  ]
+}
