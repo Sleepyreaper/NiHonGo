@@ -1,0 +1,1 @@
+"""NiHonGo backend package."""

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NiHonGo · Learn to read, write &amp; speak</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗣️</text></svg>" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand" id="brand">
+      <span class="brand-mark">🗣️</span>
+      <span class="brand-name">NiHonGo</span>
+    </div>
+    <nav id="nav" class="nav hidden">
+      <button class="nav-btn" data-view="learn">📖 Learn</button>
+      <button class="nav-btn" data-view="flashcards">🃏 Flashcards</button>
+      <button class="nav-btn" data-view="speak">🎤 Speak</button>
+      <button class="nav-btn" data-view="write">✍️ Write</button>
+      <button class="nav-btn" data-view="progress">📊 Progress</button>
+    </nav>
+    <div class="lang-badge hidden" id="langBadge" title="Switch language"></div>
+  </header>
+
+  <main id="app">
+    <!-- Language picker -->
+    <section id="view-home" class="view">
+      <h1 class="hero-title">What do you want to learn today?</h1>
+      <p class="hero-sub">Read it. Write it. Say it out loud.</p>
+      <div id="langGrid" class="lang-grid"></div>
+    </section>
+
+    <!-- Learn / browse -->
+    <section id="view-learn" class="view hidden">
+      <div class="deck-bar" id="deckBar"></div>
+      <div id="cardList" class="card-list"></div>
+    </section>
+
+    <!-- Flashcards (SRS) -->
+    <section id="view-flashcards" class="view hidden">
+      <div id="flashEmpty" class="empty hidden">🎉 Nothing due right now. Come back later or explore the Learn tab.</div>
+      <div id="flashcard" class="flashcard hidden">
+        <div class="flash-progress" id="flashProgress"></div>
+        <div class="flash-face" id="flashFace">
+          <div class="flash-prompt" id="flashPrompt"></div>
+          <div class="flash-hint">Tap the card to flip</div>
+        </div>
+        <div class="flash-controls hidden" id="flashControls">
+          <button class="grade grade-again" data-q="0">Again</button>
+          <button class="grade grade-hard"  data-q="3">Hard</button>
+          <button class="grade grade-good"  data-q="4">Good</button>
+          <button class="grade grade-easy"  data-q="5">Easy</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Speak -->
+    <section id="view-speak" class="view hidden">
+      <div class="practice-card">
+        <div class="practice-target" id="speakTarget"></div>
+        <button class="btn ghost" id="speakHear">🔊 Hear it</button>
+        <button class="btn primary big" id="speakStart">🎤 Speak now</button>
+        <div class="practice-feedback" id="speakFeedback"></div>
+        <div class="practice-nav">
+          <button class="btn ghost" id="speakSkip">Skip →</button>
+        </div>
+      </div>
+      <p class="note" id="speakNote"></p>
+    </section>
+
+    <!-- Write -->
+    <section id="view-write" class="view hidden">
+      <div class="practice-card">
+        <div class="practice-prompt" id="writePrompt"></div>
+        <input type="text" id="writeInput" class="write-input" autocomplete="off"
+               autocapitalize="off" spellcheck="false" placeholder="Type your answer…" />
+        <button class="btn primary" id="writeCheck">Check</button>
+        <div class="practice-feedback" id="writeFeedback"></div>
+        <div class="practice-nav">
+          <button class="btn ghost" id="writeReveal">Show answer</button>
+          <button class="btn ghost" id="writeNext">Next →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Progress -->
+    <section id="view-progress" class="view hidden">
+      <h2 class="section-title">Your progress</h2>
+      <div id="progressStats" class="stat-grid"></div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <span>Speaking &amp; pronunciation use your browser's built-in speech engine — best in Chrome or Edge.</span>
+  </footer>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+# Production stack for Dockge (or any `docker compose` host).
+#
+# Deploy on the server:
+#   1. Put this project in your Dockge stacks dir, e.g. /opt/stacks/nihongo/
+#   2. In Dockge, open the "nihongo" stack and hit Deploy (it builds the image),
+#      or from a shell in that folder: `docker compose up -d --build`
+#   3. Browse to http://192.168.1.147:8093
+#
+# GPU note: the `whisper` service does server-side speech recognition on the
+# 980ti. It needs the NVIDIA Container Toolkit installed on the host
+# (see README → "Offline speech on the GPU"). Remove the `whisper` service and
+# the STT_URL line to run web-only (browser handles speech instead).
+services:
+  nihongo:
+    build: .
+    image: nihongo:latest
+    container_name: nihongo
+    restart: unless-stopped
+    ports:
+      # host:container — reachable at http://192.168.1.147:8093
+      - "8093:8000"
+    volumes:
+      # Review progress (SQLite) persists here across rebuilds/restarts.
+      - nihongo-data:/data
+    environment:
+      NIHONGO_DB: /data/progress.db
+      STT_URL: http://whisper:9000
+    depends_on:
+      - whisper
+
+  whisper:
+    # Prebuilt faster-whisper server (GPU). No custom CUDA build needed.
+    image: onerahmet/openai-whisper-asr-webservice:latest-gpu
+    container_name: nihongo-whisper
+    restart: unless-stopped
+    environment:
+      ASR_ENGINE: faster_whisper
+      # "small" fits comfortably in the 980ti's 6 GB and is fast; bump to
+      # "medium" for stronger Chinese/Japanese accuracy if you have headroom.
+      ASR_MODEL: small
+    volumes:
+      # Cache the downloaded model so it isn't re-fetched on every restart.
+      - whisper-cache:/root/.cache
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+volumes:
+  nihongo-data:
+  whisper-cache:

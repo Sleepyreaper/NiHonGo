@@ -1,0 +1,20 @@
+# Local DEVELOPMENT stack — hot-reload with the source bind-mounted.
+# For the server, deploy compose.yaml instead.
+#   docker compose -f docker-compose.dev.yml up --build
+services:
+  nihongo-dev:
+    build: .
+    container_name: nihongo-dev
+    ports:
+      - "8000:8000"
+    volumes:
+      # Persist spaced-repetition progress across container restarts.
+      - nihongo-dev-data:/data
+      # Live-edit content & code without rebuilding.
+      - ./backend:/app/backend
+      - ./frontend:/app/frontend
+    command: ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+    restart: unless-stopped
+
+volumes:
+  nihongo-dev-data:
