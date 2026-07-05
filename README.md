@@ -73,9 +73,19 @@ tiny — idle RAM is well under 100 MB and no GPU is required.
    click **Deploy** (Dockge builds the image and starts it). Or from a shell in
    that folder: `docker compose up -d --build`.
 
-3. Browse to **http://\<server-ip\>:8000**, or point your reverse proxy at the
-   container (Dockge users often front stacks with Nginx Proxy Manager or
-   Traefik). Change the host port in `compose.yaml` if `8000` is taken.
+3. Browse to **https://\<server-ip\>:8093**. The stack includes a **Caddy**
+   TLS proxy (see `deploy/Caddyfile`) that serves HTTPS with a self-signed cert
+   — this is required so the **microphone works** (`getUserMedia` only runs in a
+   secure context). Your browser shows a one-time "not trusted" warning; click
+   through, or install Caddy's root CA to silence it (see below). Set the
+   address/port in `deploy/Caddyfile` and the published port in `compose.yaml`.
+
+To silence the cert warning, trust Caddy's local CA on each device:
+```bash
+# Grab the root cert from the caddy volume…
+docker cp nihongo-caddy:/data/caddy/pki/authorities/local/root.crt ./caddy-root.crt
+# …then import caddy-root.crt into your OS/browser trust store.
+```
 
 Updating later: `git pull` (or re-`rsync`) then **Deploy** again — the
 `nihongo-data` volume keeps your review history.

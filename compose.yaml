@@ -4,21 +4,34 @@
 #   1. Put this project in your Dockge stacks dir, e.g. /opt/stacks/nihongo/
 #   2. In Dockge, open the "nihongo" stack and hit Deploy (it builds the image),
 #      or from a shell in that folder: `docker compose up -d --build`
-#   3. Browse to http://192.168.1.147:8093
+#   3. Browse to https://192.168.1.147:8093  (HTTPS — accept the cert warning once)
 #
-# GPU note: the `whisper` service does server-side speech recognition on the
-# 980ti. It needs the NVIDIA Container Toolkit installed on the host
-# (see README → "Offline speech on the GPU"). Remove the `whisper` service and
-# the STT_URL line to run web-only (browser handles speech instead).
+# HTTPS: Caddy terminates TLS on :8093 with a self-signed cert so the microphone
+# works (getUserMedia needs a secure context). Edit deploy/Caddyfile to change
+# the address. GPU: the `whisper` service does speech recognition on the 980ti;
+# it needs the NVIDIA Container Toolkit on the host (see README). Remove the
+# `whisper` service + STT_URL to run web-only.
 services:
+  caddy:
+    image: caddy:2-alpine
+    container_name: nihongo-caddy
+    restart: unless-stopped
+    ports:
+      - "8093:8093"
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data        # holds the internal CA + issued certs (persist!)
+      - caddy-config:/config
+    depends_on:
+      - nihongo
+
   nihongo:
     build: .
     image: nihongo:latest
     container_name: nihongo
     restart: unless-stopped
-    ports:
-      # host:container — reachable at http://192.168.1.147:8093
-      - "8093:8000"
+    expose:
+      - "8000"                  # internal only; Caddy publishes the host port
     volumes:
       # Review progress (SQLite) persists here across rebuilds/restarts.
       - nihongo-data:/data
@@ -52,3 +65,5 @@ services:
 volumes:
   nihongo-data:
   whisper-cache:
+  caddy-data:
+  caddy-config:

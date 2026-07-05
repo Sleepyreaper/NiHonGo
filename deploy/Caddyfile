@@ -1,0 +1,21 @@
+# Caddy TLS front for NiHonGo.
+#
+# The microphone (getUserMedia / MediaRecorder) only works in a *secure context*
+# — HTTPS or localhost. Caddy terminates HTTPS on :8093 with a self-signed cert
+# from its own internal CA and proxies to the app container over the internal
+# Docker network.
+{
+	# Self-hosted on a LAN with no public DNS — don't try to bind :80 for
+	# HTTP→HTTPS redirects (avoids clashing with anything else on the host).
+	auto_https disable_redirects
+}
+
+# Serve HTTPS on the LAN address. Browsers show a one-time "not trusted" warning
+# (Caddy's CA isn't in the system trust store); click through — or install
+# Caddy's root CA to silence it — and the page becomes a secure context so the
+# mic works. Add more hostnames/IPs here (comma-separated) if you reach it other
+# ways, e.g.  https://192.168.1.147:8093, https://sleepycore:8093 {
+https://192.168.1.147:8093 {
+	tls internal
+	reverse_proxy nihongo:8000
+}
