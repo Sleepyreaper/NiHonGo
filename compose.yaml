@@ -42,25 +42,20 @@ services:
       - whisper
 
   whisper:
-    # Prebuilt faster-whisper server (GPU). No custom CUDA build needed.
-    image: onerahmet/openai-whisper-asr-webservice:latest-gpu
+    # faster-whisper server, running on CPU. The GTX 980ti is Maxwell (compute
+    # 5.2), which current CTranslate2 CUDA builds no longer ship kernels for
+    # (cudaErrorNoKernelImageForDevice), so GPU is not usable here. Short phrases
+    # transcribe on CPU in ~1-2s, which is fine for this app.
+    image: onerahmet/openai-whisper-asr-webservice:latest
     container_name: nihongo-whisper
     restart: unless-stopped
     environment:
       ASR_ENGINE: faster_whisper
-      # "small" fits comfortably in the 980ti's 6 GB and is fast; bump to
-      # "medium" for stronger Chinese/Japanese accuracy if you have headroom.
-      ASR_MODEL: small
+      ASR_MODEL: small          # drop to "base" if CPU transcription feels slow
+      ASR_COMPUTE_TYPE: int8    # fast and light on CPU
     volumes:
       # Cache the downloaded model so it isn't re-fetched on every restart.
       - whisper-cache:/root/.cache
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [gpu]
 
 volumes:
   nihongo-data:

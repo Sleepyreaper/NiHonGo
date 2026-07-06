@@ -90,39 +90,33 @@ docker cp nihongo-caddy:/data/caddy/pki/authorities/local/root.crt ./caddy-root.
 Updating later: `git pull` (or re-`rsync`) then **Deploy** again — the
 `nihongo-data` volume keeps your review history.
 
-## Offline speech on the GPU (optional but recommended)
+## Offline speech (server-side Whisper)
 
 The production `compose.yaml` includes a **`whisper`** service that runs
 [openai-whisper-asr-webservice](https://github.com/ahmetoner/whisper-asr-webservice)
-(faster-whisper backend) on an NVIDIA GPU. With it, 🎤 **Speak mode records your
-mic and scores your pronunciation server-side — in *any* browser** (Firefox and
-Safari included), instead of relying on Chrome/Edge's built-in recognition.
+(faster-whisper backend). With it, 🎤 **Speak mode records your mic and scores
+your pronunciation server-side — in *any* browser** (Firefox and Safari
+included), instead of relying on Chrome/Edge's built-in recognition.
 
 **How it fits together:** the browser records audio → posts it to the NiHonGo
 backend → the backend forwards it to the `whisper` service → the transcript is
 compared to the target phrase. The `whisper` service is internal (no published
 port); only NiHonGo talks to it, via `STT_URL`.
 
-**Host prerequisites (one-time):**
+**Runs on CPU.** It transcribes short phrases in ~1–2 s, so no GPU is needed.
+A GTX 980ti (Maxwell, compute 5.2) specifically **cannot** be used — current
+CTranslate2 CUDA builds ship no kernels for it (`cudaErrorNoKernelImageForDevice`).
+GPU acceleration would need a Turing-or-newer card (compute ≥ 7.0) and the
+`:latest-gpu` image plus the NVIDIA Container Toolkit.
 
-1. NVIDIA driver + [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html):
-   ```bash
-   sudo apt-get install -y nvidia-container-toolkit
-   sudo nvidia-ctk runtime configure --runtime=docker
-   sudo systemctl restart docker
-   docker run --rm --gpus all nvidia/cuda:12.4.0-base-ubuntu22.04 nvidia-smi   # sanity check
-   ```
-2. Deploy the stack. On first start the `whisper` service downloads its model
-   (cached in the `whisper-cache` volume), so give it a minute before the first
-   Speak attempt.
-
-**Tuning:** `ASR_MODEL` in `compose.yaml` defaults to `small` (fast, ~1–2 GB
-VRAM — comfortable on a 6 GB 980 Ti). Bump to `medium` for stronger
-Chinese/Japanese accuracy. If CTranslate2 complains about compute type on the
-Maxwell GPU, set `ASR_COMPUTE_TYPE: float16` (or `float32`) on the service.
+**Tuning:** `ASR_MODEL` in `compose.yaml` defaults to `small`; drop to `base`
+for faster (slightly less accurate) CPU transcription, or `medium` if your CPU
+can spare the time. `ASR_COMPUTE_TYPE: int8` keeps it light on CPU. The model
+downloads on first use and is cached in the `whisper-cache` volume.
 
 **Web-only fallback:** remove the `whisper` service and the `STT_URL` env, and
-the app runs GPU-free — Speak mode then uses the browser's own recognition:
+the app runs speech-service-free — Speak mode then uses the browser's own
+recognition:
 
 - **Pronunciation (🔊 / text-to-speech):** works in all modern browsers.
 - **Speech recognition (🎤):** browser-based path works in **Chrome and Edge**;
