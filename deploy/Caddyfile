@@ -8,6 +8,17 @@
 	# Self-hosted on a LAN with no public DNS — don't try to bind :80 for
 	# HTTP→HTTPS redirects (avoids clashing with anything else on the host).
 	auto_https disable_redirects
+
+	# Clients that connect by IP address do NOT send TLS SNI, so Caddy can't
+	# tell which site/cert to use and the handshake fails ("internal error").
+	# This names the cert to present by default. Must match the site below.
+	default_sni 192.168.1.147
+
+	# HTTP/3 (QUIC) needs a published UDP port; compose only maps TCP, so serve
+	# plain HTTP/1.1 + HTTP/2 over TLS and don't advertise an unreachable h3.
+	servers {
+		protocols h1 h2
+	}
 }
 
 # Serve HTTPS on the LAN address. Browsers show a one-time "not trusted" warning
