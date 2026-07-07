@@ -42,20 +42,27 @@ services:
       - whisper
 
   whisper:
-    # faster-whisper server, running on CPU. The GTX 980ti is Maxwell (compute
-    # 5.2), which current CTranslate2 CUDA builds no longer ship kernels for
-    # (cudaErrorNoKernelImageForDevice), so GPU is not usable here. Short phrases
-    # transcribe on CPU in ~1-2s, which is fine for this app.
-    image: onerahmet/openai-whisper-asr-webservice:latest
+    # faster-whisper server on the server's RTX 3090 (Ampere, sm_86), which runs
+    # CTranslate2's CUDA kernels fine (unlike the old Maxwell 980ti). Needs the
+    # NVIDIA Container Toolkit on the host. If the GPU isn't available, switch the
+    # image back to ":latest" and remove the `deploy:` block to fall back to CPU.
+    image: onerahmet/openai-whisper-asr-webservice:latest-gpu
     container_name: nihongo-whisper
     restart: unless-stopped
     environment:
       ASR_ENGINE: faster_whisper
-      ASR_MODEL: small          # drop to "base" if CPU transcription feels slow
-      ASR_COMPUTE_TYPE: int8    # fast and light on CPU
+      ASR_MODEL: medium         # 3090 has the VRAM; better Chinese/Japanese accuracy
+      ASR_COMPUTE_TYPE: float16 # fast on Ampere
     volumes:
       # Cache the downloaded model so it isn't re-fetched on every restart.
       - whisper-cache:/root/.cache
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
 
 volumes:
   nihongo-data:
