@@ -42,20 +42,28 @@ services:
       - whisper
 
   whisper:
-    # faster-whisper server on the server's RTX 3090 (Ampere, sm_86), which runs
-    # CTranslate2's CUDA kernels fine (unlike the old Maxwell 980ti). Needs the
-    # NVIDIA Container Toolkit on the host. If the GPU isn't available, switch the
-    # image back to ":latest" and remove the `deploy:` block to fall back to CPU.
+    # faster-whisper on the server's RTX 3090. The model loads into VRAM at
+    # startup, so it must fit alongside whatever else uses the GPU (e.g. ComfyUI).
+    # "small" + int8 needs only a few hundred MB — bump to medium/float16 only if
+    # the 3090 has the headroom (check `nvidia-smi`). If it OOMs or the GPU is
+    # busy, switch the image to ":latest" and delete the `deploy:` block for CPU.
     image: onerahmet/openai-whisper-asr-webservice:latest-gpu
     container_name: nihongo-whisper
     restart: unless-stopped
     environment:
       ASR_ENGINE: faster_whisper
-      ASR_MODEL: medium         # 3090 has the VRAM; better Chinese/Japanese accuracy
-      ASR_COMPUTE_TYPE: float16 # fast on Ampere
+      ASR_MODEL: small          # light on VRAM; good accuracy for short phrases
+      ASR_COMPUTE_TYPE: int8    # ~250-500 MB on GPU (vs ~2-3 GB for medium/float16)
     volumes:
       # Cache the downloaded model so it isn't re-fetched on every restart.
       - whisper-cache:/root/.cache
+    healthcheck:
+      # Marks the service healthy only once the model is loaded and serving.
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://localhost:9000/docs').status==200 else 1)"]
+      interval: 30s
+      timeout: 5s
+      start_period: 120s
+      retries: 5
     deploy:
       resources:
         reservations:
