@@ -16,7 +16,9 @@
           "id": "ja-g-01",
           "native": "こんにちは",
           "reading": "konnichiwa",
-          "translation": "Hello / Good afternoon"
+          "translation": "Hello / Good afternoon",
+          "img_prompt": "a person smiling and waving hello",
+          "image": "/img/ja/ja-g-01.png"
         },
         {
           "id": "ja-g-02",
@@ -162,19 +164,25 @@
           "id": "ja-f-01",
           "native": "水",
           "reading": "mizu",
-          "translation": "water"
+          "translation": "water",
+          "img_prompt": "a tall glass of clear water",
+          "image": "/img/ja/ja-f-01.png"
         },
         {
           "id": "ja-f-02",
           "native": "お茶",
           "reading": "ocha",
-          "translation": "tea"
+          "translation": "tea",
+          "img_prompt": "a cup of green tea",
+          "image": "/img/ja/ja-f-02.png"
         },
         {
           "id": "ja-f-03",
           "native": "ご飯",
           "reading": "gohan",
-          "translation": "rice / meal"
+          "translation": "rice / meal",
+          "img_prompt": "a bowl of steamed white rice",
+          "image": "/img/ja/ja-f-03.png"
         },
         {
           "id": "ja-f-04",

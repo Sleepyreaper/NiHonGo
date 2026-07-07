@@ -12,20 +12,92 @@
       "name": "Greetings & Basics",
       "description": "Say hi to your Cantonese-speaking friends.",
       "cards": [
-        {"id": "yue-g-01", "native": "你好", "reading": "nei5 hou2", "translation": "Hello"},
-        {"id": "yue-g-02", "native": "早晨", "reading": "zou2 san4", "translation": "Good morning"},
-        {"id": "yue-g-03", "native": "你好嗎？", "reading": "nei5 hou2 maa3?", "translation": "How are you?"},
-        {"id": "yue-g-04", "native": "我幾好", "reading": "ngo5 gei2 hou2", "translation": "I'm pretty good"},
-        {"id": "yue-g-05", "native": "你叫咩名？", "reading": "nei5 giu3 me1 meng2?", "translation": "What's your name?"},
-        {"id": "yue-g-06", "native": "我叫...", "reading": "ngo5 giu3...", "translation": "My name is..."},
-        {"id": "yue-g-07", "native": "好開心識到你", "reading": "hou2 hoi1 sam1 sik1 dou2 nei5", "translation": "Nice to meet you"},
-        {"id": "yue-g-08", "native": "唔該", "reading": "m4 goi1", "translation": "Thanks / Excuse me (for service)"},
-        {"id": "yue-g-09", "native": "多謝", "reading": "do1 ze6", "translation": "Thank you (for a gift/favour)"},
-        {"id": "yue-g-10", "native": "對唔住", "reading": "deoi3 m4 zyu6", "translation": "Sorry"},
-        {"id": "yue-g-11", "native": "拜拜", "reading": "baai1 baai3", "translation": "Bye-bye"},
-        {"id": "yue-g-12", "native": "係 / 唔係", "reading": "hai6 / m4 hai6", "translation": "Yes / No (is / is not)"},
-        {"id": "yue-g-13", "native": "唔緊要", "reading": "m4 gan2 jiu3", "translation": "It's okay / No problem"},
-        {"id": "yue-g-14", "native": "冇問題", "reading": "mou5 man6 tai4", "translation": "No problem"}
+        {
+          "id": "yue-g-01",
+          "native": "你好",
+          "reading": "nei5 hou2",
+          "translation": "Hello",
+          "img_prompt": "a person smiling and waving hello",
+          "image": "/img/yue/yue-g-01.png"
+        },
+        {
+          "id": "yue-g-02",
+          "native": "早晨",
+          "reading": "zou2 san4",
+          "translation": "Good morning"
+        },
+        {
+          "id": "yue-g-03",
+          "native": "你好嗎？",
+          "reading": "nei5 hou2 maa3?",
+          "translation": "How are you?"
+        },
+        {
+          "id": "yue-g-04",
+          "native": "我幾好",
+          "reading": "ngo5 gei2 hou2",
+          "translation": "I'm pretty good"
+        },
+        {
+          "id": "yue-g-05",
+          "native": "你叫咩名？",
+          "reading": "nei5 giu3 me1 meng2?",
+          "translation": "What's your name?"
+        },
+        {
+          "id": "yue-g-06",
+          "native": "我叫...",
+          "reading": "ngo5 giu3...",
+          "translation": "My name is..."
+        },
+        {
+          "id": "yue-g-07",
+          "native": "好開心識到你",
+          "reading": "hou2 hoi1 sam1 sik1 dou2 nei5",
+          "translation": "Nice to meet you"
+        },
+        {
+          "id": "yue-g-08",
+          "native": "唔該",
+          "reading": "m4 goi1",
+          "translation": "Thanks / Excuse me (for service)"
+        },
+        {
+          "id": "yue-g-09",
+          "native": "多謝",
+          "reading": "do1 ze6",
+          "translation": "Thank you (for a gift/favour)"
+        },
+        {
+          "id": "yue-g-10",
+          "native": "對唔住",
+          "reading": "deoi3 m4 zyu6",
+          "translation": "Sorry"
+        },
+        {
+          "id": "yue-g-11",
+          "native": "拜拜",
+          "reading": "baai1 baai3",
+          "translation": "Bye-bye"
+        },
+        {
+          "id": "yue-g-12",
+          "native": "係 / 唔係",
+          "reading": "hai6 / m4 hai6",
+          "translation": "Yes / No (is / is not)"
+        },
+        {
+          "id": "yue-g-13",
+          "native": "唔緊要",
+          "reading": "m4 gan2 jiu3",
+          "translation": "It's okay / No problem"
+        },
+        {
+          "id": "yue-g-14",
+          "native": "冇問題",
+          "reading": "mou5 man6 tai4",
+          "translation": "No problem"
+        }
       ]
     },
     {
@@ -33,16 +105,66 @@
       "name": "Numbers 1–10",
       "description": "Counting in Cantonese.",
       "cards": [
-        {"id": "yue-n-01", "native": "一", "reading": "jat1", "translation": "one"},
-        {"id": "yue-n-02", "native": "二", "reading": "ji6", "translation": "two"},
-        {"id": "yue-n-03", "native": "三", "reading": "saam1", "translation": "three"},
-        {"id": "yue-n-04", "native": "四", "reading": "sei3", "translation": "four"},
-        {"id": "yue-n-05", "native": "五", "reading": "ng5", "translation": "five"},
-        {"id": "yue-n-06", "native": "六", "reading": "luk6", "translation": "six"},
-        {"id": "yue-n-07", "native": "七", "reading": "cat1", "translation": "seven"},
-        {"id": "yue-n-08", "native": "八", "reading": "baat3", "translation": "eight"},
-        {"id": "yue-n-09", "native": "九", "reading": "gau2", "translation": "nine"},
-        {"id": "yue-n-10", "native": "十", "reading": "sap6", "translation": "ten"}
+        {
+          "id": "yue-n-01",
+          "native": "一",
+          "reading": "jat1",
+          "translation": "one"
+        },
+        {
+          "id": "yue-n-02",
+          "native": "二",
+          "reading": "ji6",
+          "translation": "two"
+        },
+        {
+          "id": "yue-n-03",
+          "native": "三",
+          "reading": "saam1",
+          "translation": "three"
+        },
+        {
+          "id": "yue-n-04",
+          "native": "四",
+          "reading": "sei3",
+          "translation": "four"
+        },
+        {
+          "id": "yue-n-05",
+          "native": "五",
+          "reading": "ng5",
+          "translation": "five"
+        },
+        {
+          "id": "yue-n-06",
+          "native": "六",
+          "reading": "luk6",
+          "translation": "six"
+        },
+        {
+          "id": "yue-n-07",
+          "native": "七",
+          "reading": "cat1",
+          "translation": "seven"
+        },
+        {
+          "id": "yue-n-08",
+          "native": "八",
+          "reading": "baat3",
+          "translation": "eight"
+        },
+        {
+          "id": "yue-n-09",
+          "native": "九",
+          "reading": "gau2",
+          "translation": "nine"
+        },
+        {
+          "id": "yue-n-10",
+          "native": "十",
+          "reading": "sap6",
+          "translation": "ten"
+        }
       ]
     },
     {
@@ -50,16 +172,78 @@
       "name": "Food & Drink",
       "description": "Order like a local — dim sum ready.",
       "cards": [
-        {"id": "yue-f-01", "native": "水", "reading": "seoi2", "translation": "water"},
-        {"id": "yue-f-02", "native": "茶", "reading": "caa4", "translation": "tea"},
-        {"id": "yue-f-03", "native": "咖啡", "reading": "gaa3 fe1", "translation": "coffee"},
-        {"id": "yue-f-04", "native": "飯", "reading": "faan6", "translation": "rice / meal"},
-        {"id": "yue-f-05", "native": "麵", "reading": "min6", "translation": "noodles"},
-        {"id": "yue-f-06", "native": "雞肉", "reading": "gai1 juk6", "translation": "chicken"},
-        {"id": "yue-f-07", "native": "我肚餓", "reading": "ngo5 tou5 ngo6", "translation": "I'm hungry"},
-        {"id": "yue-f-08", "native": "好好味", "reading": "hou2 hou2 mei6", "translation": "It's delicious"},
-        {"id": "yue-f-09", "native": "唔該埋單", "reading": "m4 goi1 maai4 daan1", "translation": "The bill, please"},
-        {"id": "yue-f-10", "native": "我要一杯咖啡", "reading": "ngo5 jiu3 jat1 bui1 gaa3 fe1", "translation": "I want a coffee"}
+        {
+          "id": "yue-f-01",
+          "native": "水",
+          "reading": "seoi2",
+          "translation": "water",
+          "img_prompt": "a tall glass of clear water",
+          "image": "/img/yue/yue-f-01.png"
+        },
+        {
+          "id": "yue-f-02",
+          "native": "茶",
+          "reading": "caa4",
+          "translation": "tea",
+          "img_prompt": "a cup of hot tea",
+          "image": "/img/yue/yue-f-02.png"
+        },
+        {
+          "id": "yue-f-03",
+          "native": "咖啡",
+          "reading": "gaa3 fe1",
+          "translation": "coffee",
+          "img_prompt": "a cup of coffee",
+          "image": "/img/yue/yue-f-03.png"
+        },
+        {
+          "id": "yue-f-04",
+          "native": "飯",
+          "reading": "faan6",
+          "translation": "rice / meal",
+          "img_prompt": "a bowl of steamed white rice",
+          "image": "/img/yue/yue-f-04.png"
+        },
+        {
+          "id": "yue-f-05",
+          "native": "麵",
+          "reading": "min6",
+          "translation": "noodles",
+          "img_prompt": "a bowl of noodles with chopsticks",
+          "image": "/img/yue/yue-f-05.png"
+        },
+        {
+          "id": "yue-f-06",
+          "native": "雞肉",
+          "reading": "gai1 juk6",
+          "translation": "chicken",
+          "img_prompt": "a piece of cooked chicken on a plate",
+          "image": "/img/yue/yue-f-06.png"
+        },
+        {
+          "id": "yue-f-07",
+          "native": "我肚餓",
+          "reading": "ngo5 tou5 ngo6",
+          "translation": "I'm hungry"
+        },
+        {
+          "id": "yue-f-08",
+          "native": "好好味",
+          "reading": "hou2 hou2 mei6",
+          "translation": "It's delicious"
+        },
+        {
+          "id": "yue-f-09",
+          "native": "唔該埋單",
+          "reading": "m4 goi1 maai4 daan1",
+          "translation": "The bill, please"
+        },
+        {
+          "id": "yue-f-10",
+          "native": "我要一杯咖啡",
+          "reading": "ngo5 jiu3 jat1 bui1 gaa3 fe1",
+          "translation": "I want a coffee"
+        }
       ]
     },
     {
@@ -67,14 +251,54 @@
       "name": "Everyday Phrases",
       "description": "Get by in real Cantonese conversations.",
       "cards": [
-        {"id": "yue-p-01", "native": "我唔明", "reading": "ngo5 m4 ming4", "translation": "I don't understand"},
-        {"id": "yue-p-02", "native": "你識唔識講英文？", "reading": "nei5 sik1 m4 sik1 gong2 jing1 man2?", "translation": "Do you speak English?"},
-        {"id": "yue-p-03", "native": "廁所喺邊度？", "reading": "ci3 so2 hai2 bin1 dou6?", "translation": "Where is the toilet?"},
-        {"id": "yue-p-04", "native": "幾多錢？", "reading": "gei2 do1 cin2?", "translation": "How much is it?"},
-        {"id": "yue-p-05", "native": "唔該幫我", "reading": "m4 goi1 bong1 ngo5", "translation": "Please help me"},
-        {"id": "yue-p-06", "native": "我識講少少廣東話", "reading": "ngo5 sik1 gong2 siu2 siu2 gwong2 dung1 waa2", "translation": "I speak a little Cantonese"},
-        {"id": "yue-p-07", "native": "唔該再講一次", "reading": "m4 goi1 zoi3 gong2 jat1 ci3", "translation": "Please say it again"},
-        {"id": "yue-p-08", "native": "我學緊廣東話", "reading": "ngo5 hok6 gan2 gwong2 dung1 waa2", "translation": "I'm learning Cantonese"}
+        {
+          "id": "yue-p-01",
+          "native": "我唔明",
+          "reading": "ngo5 m4 ming4",
+          "translation": "I don't understand"
+        },
+        {
+          "id": "yue-p-02",
+          "native": "你識唔識講英文？",
+          "reading": "nei5 sik1 m4 sik1 gong2 jing1 man2?",
+          "translation": "Do you speak English?"
+        },
+        {
+          "id": "yue-p-03",
+          "native": "廁所喺邊度？",
+          "reading": "ci3 so2 hai2 bin1 dou6?",
+          "translation": "Where is the toilet?"
+        },
+        {
+          "id": "yue-p-04",
+          "native": "幾多錢？",
+          "reading": "gei2 do1 cin2?",
+          "translation": "How much is it?"
+        },
+        {
+          "id": "yue-p-05",
+          "native": "唔該幫我",
+          "reading": "m4 goi1 bong1 ngo5",
+          "translation": "Please help me"
+        },
+        {
+          "id": "yue-p-06",
+          "native": "我識講少少廣東話",
+          "reading": "ngo5 sik1 gong2 siu2 siu2 gwong2 dung1 waa2",
+          "translation": "I speak a little Cantonese"
+        },
+        {
+          "id": "yue-p-07",
+          "native": "唔該再講一次",
+          "reading": "m4 goi1 zoi3 gong2 jat1 ci3",
+          "translation": "Please say it again"
+        },
+        {
+          "id": "yue-p-08",
+          "native": "我學緊廣東話",
+          "reading": "ngo5 hok6 gan2 gwong2 dung1 waa2",
+          "translation": "I'm learning Cantonese"
+        }
       ]
     }
   ]

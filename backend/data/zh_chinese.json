@@ -16,7 +16,9 @@
           "id": "zh-g-01",
           "native": "你好",
           "reading": "nǐ hǎo",
-          "translation": "Hello"
+          "translation": "Hello",
+          "img_prompt": "a person smiling and waving hello",
+          "image": "/img/zh/zh-g-01.png"
         },
         {
           "id": "zh-g-02",
@@ -180,7 +182,9 @@
           "id": "zh-f-01",
           "native": "水",
           "reading": "shuǐ",
-          "translation": "water"
+          "translation": "water",
+          "img_prompt": "a tall glass of clear water",
+          "image": "/img/zh/zh-f-01.png"
         },
         {
           "id": "zh-f-02",
@@ -202,19 +206,25 @@
           "id": "zh-f-04",
           "native": "米饭",
           "reading": "mǐfàn",
-          "translation": "cooked rice"
+          "translation": "cooked rice",
+          "img_prompt": "a bowl of steamed white rice",
+          "image": "/img/zh/zh-f-04.png"
         },
         {
           "id": "zh-f-05",
           "native": "面条",
           "reading": "miàntiáo",
-          "translation": "noodles"
+          "translation": "noodles",
+          "img_prompt": "a bowl of noodles with chopsticks",
+          "image": "/img/zh/zh-f-05.png"
         },
         {
           "id": "zh-f-06",
           "native": "鸡肉",
           "reading": "jīròu",
-          "translation": "chicken"
+          "translation": "chicken",
+          "img_prompt": "a piece of cooked chicken on a plate",
+          "image": "/img/zh/zh-f-06.png"
         },
         {
           "id": "zh-f-07",

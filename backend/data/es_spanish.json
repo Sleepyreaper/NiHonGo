@@ -127,7 +127,9 @@
           "id": "es-u2-06",
           "native": "Mucho gusto",
           "reading": "MOO-cho GOOS-to",
-          "translation": "Nice to meet you"
+          "translation": "Nice to meet you",
+          "img_prompt": "two people shaking hands in a friendly greeting",
+          "image": "/img/es/es-u2-06.png"
         },
         {
           "id": "es-u2-07",
@@ -151,7 +153,9 @@
           "id": "es-u2-10",
           "native": "Estoy cansado / cansada",
           "reading": "es-TOY kan-SAH-do",
-          "translation": "I'm tired"
+          "translation": "I'm tired",
+          "img_prompt": "a tired person yawning and stretching",
+          "image": "/img/es/es-u2-10.png"
         },
         {
           "id": "es-u2-11",
@@ -190,7 +194,9 @@
           "id": "es-u3-04",
           "native": "¿Me da un jugo, por favor?",
           "reading": "meh dah oon HOO-go",
-          "translation": "Can I have a juice, please?"
+          "translation": "Can I have a juice, please?",
+          "img_prompt": "a tall glass of fresh orange juice",
+          "image": "/img/es/es-u3-04.png"
         },
         {
           "id": "es-u3-05",
@@ -273,13 +279,17 @@
           "id": "es-u4-05",
           "native": "a la izquierda",
           "reading": "ah lah ees-KYEHR-dah",
-          "translation": "to the left"
+          "translation": "to the left",
+          "img_prompt": "a bold arrow pointing to the left",
+          "image": "/img/es/es-u4-05.png"
         },
         {
           "id": "es-u4-06",
           "native": "todo derecho",
           "reading": "TOH-do deh-REH-cho",
-          "translation": "straight ahead"
+          "translation": "straight ahead",
+          "img_prompt": "a bold arrow pointing straight up",
+          "image": "/img/es/es-u4-06.png"
         },
         {
           "id": "es-u4-07",
@@ -297,7 +307,9 @@
           "id": "es-u4-09",
           "native": "Estoy perdido / perdida",
           "reading": "es-TOY per-DEE-do",
-          "translation": "I'm lost"
+          "translation": "I'm lost",
+          "img_prompt": "a confused traveler looking at a folded map",
+          "image": "/img/es/es-u4-09.png"
         },
         {
           "id": "es-u4-10",
@@ -342,13 +354,17 @@
           "id": "es-u5-05",
           "native": "¿Aceptan tarjeta?",
           "reading": "ah-SEP-tan tar-HEH-tah",
-          "translation": "Do you take card?"
+          "translation": "Do you take card?",
+          "img_prompt": "a single credit card",
+          "image": "/img/es/es-u5-05.png"
         },
         {
           "id": "es-u5-06",
           "native": "en efectivo",
           "reading": "en eh-fek-TEE-vo",
-          "translation": "in cash"
+          "translation": "in cash",
+          "img_prompt": "a small stack of cash banknotes and coins",
+          "image": "/img/es/es-u5-06.png"
         },
         {
           "id": "es-u5-07",
@@ -372,7 +388,9 @@
           "id": "es-u5-10",
           "native": "¿Me da una bolsa?",
           "reading": "meh dah OO-nah BOL-sah",
-          "translation": "Can I have a bag?"
+          "translation": "Can I have a bag?",
+          "img_prompt": "a paper shopping bag",
+          "image": "/img/es/es-u5-10.png"
         }
       ]
     },
@@ -385,7 +403,9 @@
           "id": "es-u6-01",
           "native": "¿Qué hora es?",
           "reading": "keh OH-rah es",
-          "translation": "What time is it?"
+          "translation": "What time is it?",
+          "img_prompt": "a round wall clock",
+          "image": "/img/es/es-u6-01.png"
         },
         {
           "id": "es-u6-02",
