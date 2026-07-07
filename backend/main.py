@@ -177,7 +177,8 @@ async def speech_check(code: str, card_id: str, audio: UploadFile = File(...)) -
     except Exception as exc:  # network / service errors
         raise HTTPException(status_code=502, detail=f"Speech service error: {exc}")
 
-    return {"ok": stt.matches(transcript, card["native"]), "transcript": transcript, "target": card["native"]}
+    ok = stt.matches(transcript, card["native"], card.get("reading", ""), code)
+    return {"ok": ok, "transcript": transcript, "target": card["native"]}
 
 
 @app.get("/api/health")
