@@ -24,6 +24,13 @@ const state = {
   rpRecording: false,
   rpRecorder: null,
   rpChunks: [],
+  rpListening: false,    // roleplay: hide partner text, listen only
+  course: null,          // {deckId, week, step} when a step is launched from the class
+  shadowCards: [],
+  shadowIndex: 0,
+  ltCards: [],
+  ltIndex: 0,
+  ltScore: 0,
 };
 
 /* ------------------------------------------------------------------ */
@@ -79,6 +86,13 @@ function showView(name) {
   if (view) view.classList.remove("hidden");
   $$(".nav-btn").forEach((b) => b.classList.toggle("active", b.dataset.view === name));
 
+  // Leaving a class step via the top nav abandons it (no completion).
+  if (state.course && name !== "learn" && name !== "flashcards") {
+    state.course = null;
+    $("#course-banner").classList.add("hidden");
+  }
+
+  if (name === "course") renderCourse();
   if (name === "learn") renderLearn();
   if (name === "flashcards") startFlashcards();
   if (name === "speak") nextSpeak();
@@ -220,6 +234,7 @@ async function gradeFlashcard(quality) {
 
   state.flashIndex++;
   if (state.flashIndex >= state.flashQueue.length) {
+    if (state.course && state.course.step === "drill") { completeCourseStep(); return; }
     $("#flashcard").classList.add("hidden");
     $("#flashEmpty").classList.remove("hidden");
     $("#flashEmpty").textContent = "🎉 Session complete! Great work — check Progress to see your stats.";
@@ -469,11 +484,19 @@ function playBeat() {
   const beat = state.scenario.beats[state.beatIndex];
   const line = beat.say[Math.floor(Math.random() * beat.say.length)];
   $("#rp-progress").textContent = `Turn ${state.beatIndex + 1} of ${state.scenario.beats.length}`;
+  const masked = state.rpListening;
   const b = addBubble("partner", `
     <div class="who">${state.scenario.partner}</div>
-    <div class="say">${line} <button class="replay" title="Replay">🔊</button></div>
-    ${beat.say_en ? `<div class="say-en">${beat.say_en}</div>` : ""}`);
-  b.querySelector(".replay").addEventListener("click", () => speak(line, rpSpeechLang()));
+    <div class="say${masked ? " masked" : ""}">${line} <button class="replay" title="Replay">🔊</button></div>
+    ${masked ? '<div class="reveal-hint">🎧 Listen — tap to reveal the text</div>' : (beat.say_en ? `<div class="say-en">${beat.say_en}</div>` : "")}`);
+  const sayEl = b.querySelector(".say");
+  b.querySelector(".replay").addEventListener("click", (e) => { e.stopPropagation(); speak(line, rpSpeechLang()); });
+  if (masked) sayEl.addEventListener("click", () => {
+    sayEl.classList.remove("masked");
+    const hint = b.querySelector(".reveal-hint");
+    if (hint && beat.say_en) hint.outerHTML = `<div class="say-en">${beat.say_en}</div>`;
+    else if (hint) hint.remove();
+  });
   speak(line, rpSpeechLang());
   renderRpInput(beat);
 }
@@ -586,6 +609,245 @@ async function rpToggleRecord() {
 }
 
 /* ------------------------------------------------------------------ */
+/* Class — weekly guided loop (learn → tape → drill → test)            */
+/* ------------------------------------------------------------------ */
+const COURSE_STEPS = [
+  { key: "learn", label: "Learn", icon: "📖" },
+  { key: "tape", label: "Tape", icon: "📼" },
+  { key: "drill", label: "Drill", icon: "🃏" },
+  { key: "test", label: "Test", icon: "🎧" },
+];
+
+const doneKey = (deckId, step) => `nihongo:done:${state.current.code}:${deckId}:${step}`;
+const isStepDone = (deckId, step) => localStorage.getItem(doneKey(deckId, step)) === "1";
+const markStepDone = (deckId, step) => localStorage.setItem(doneKey(deckId, step), "1");
+
+function showOnly(name) {
+  $$(".view").forEach((v) => v.classList.add("hidden"));
+  const el = $(`#view-${name}`);
+  if (el) el.classList.remove("hidden");
+}
+
+async function renderCourse() {
+  $("#course-banner").classList.add("hidden");
+  $("#course-title").textContent = `Your ${state.current.name} class`;
+  const decks = await api(`/languages/${state.current.code}/decks`);
+  const wrap = $("#course-weeks");
+  wrap.innerHTML = "";
+  let nextClaimed = false;
+  decks.forEach((d, wi) => {
+    const done = COURSE_STEPS.filter((s) => isStepDone(d.id, s.key)).length;
+    const week = document.createElement("div");
+    week.className = "week" + (done === COURSE_STEPS.length ? " done" : "");
+    let steps = "";
+    COURSE_STEPS.forEach((s) => {
+      const sd = isStepDone(d.id, s.key);
+      let cls = "step-btn" + (sd ? " done" : "");
+      if (!sd && !nextClaimed) { cls += " next"; nextClaimed = true; }
+      steps += `<button class="${cls}" data-deck="${d.id}" data-week="${wi + 1}" data-step="${s.key}">
+        <span>${s.icon}</span><span>${s.label}</span><span class="step-check">${sd ? "✓" : ""}</span></button>`;
+    });
+    week.innerHTML = `
+      <div class="week-head">
+        <span class="week-num">Week ${wi + 1}</span>
+        <span class="week-name">${d.name}</span>
+        <span class="week-desc">${d.description || ""}</span>
+      </div>
+      <div class="week-steps">${steps}</div>`;
+    week.querySelectorAll(".step-btn").forEach((b) =>
+      b.addEventListener("click", () => startCourseStep(b.dataset.deck, +b.dataset.week, b.dataset.step)));
+    wrap.appendChild(week);
+  });
+}
+
+function startCourseStep(deckId, week, step) {
+  state.course = { deckId, week, step };
+  if (step === "learn") { state.deck = deckId; showOnly("learn"); renderLearn(); }
+  else if (step === "tape") startShadow(deckId);
+  else if (step === "drill") startDrill(deckId);
+  else if (step === "test") startListeningTest(deckId);
+  showCourseBanner();
+}
+
+function showCourseBanner() {
+  if (!state.course) { $("#course-banner").classList.add("hidden"); return; }
+  const meta = COURSE_STEPS.find((s) => s.key === state.course.step);
+  const b = $("#course-banner");
+  b.classList.remove("hidden");
+  b.innerHTML = `
+    <span class="cb-label">🎓 Week ${state.course.week} · ${meta.icon} ${meta.label}</span>
+    <span class="cb-sub">part of your class</span>
+    <span class="cb-actions">
+      <button class="btn primary" id="cb-done">✓ Mark done &amp; continue</button>
+      <button class="btn ghost" id="cb-exit">Exit</button>
+    </span>`;
+  $("#cb-done").addEventListener("click", completeCourseStep);
+  $("#cb-exit").addEventListener("click", exitCourseStep);
+}
+
+function completeCourseStep() {
+  if (state.course) markStepDone(state.course.deckId, state.course.step);
+  exitCourseStep();
+}
+
+function exitCourseStep() {
+  state.course = null;
+  $("#course-banner").classList.add("hidden");
+  $$(".nav-btn").forEach((x) => x.classList.remove("active"));
+  showOnly("course");
+  renderCourse();
+}
+
+/* --- Generic one-shot recorder → /api/stt (used by Tape) --- */
+let _rec = null, _recChunks = [], _recStream = null;
+async function toggleRecorder(btn, language, activeLabel, idleLabel, onResult) {
+  if (_rec) { _rec.stop(); return; }
+  try { _recStream = await navigator.mediaDevices.getUserMedia({ audio: true }); }
+  catch (e) { onResult(null, "blocked"); return; }
+  _rec = new MediaRecorder(_recStream);
+  _recChunks = [];
+  _rec.ondataavailable = (e) => { if (e.data && e.data.size) _recChunks.push(e.data); };
+  _rec.onstop = async () => {
+    _recStream.getTracks().forEach((t) => t.stop());
+    btn.classList.remove("listening");
+    btn.textContent = idleLabel;
+    const blob = new Blob(_recChunks, { type: _rec.mimeType || "audio/webm" });
+    _rec = null;
+    const ext = blob.type.includes("ogg") ? "ogg" : blob.type.includes("mp4") ? "mp4" : "webm";
+    const form = new FormData();
+    form.append("audio", blob, `a.${ext}`);
+    form.append("language", language);
+    try {
+      const res = await fetch(`${API}/stt`, { method: "POST", body: form });
+      if (!res.ok) throw new Error(`${res.status}`);
+      onResult((await res.json()).transcript || "", null);
+    } catch (e) { onResult(null, "error"); }
+  };
+  _rec.start();
+  btn.classList.add("listening");
+  btn.textContent = activeLabel;
+}
+
+/* --- Tape (shadowing): hear it, say it back --- */
+function startShadow(deckId) {
+  state.shadowCards = state.cards.filter((c) => c.deck === deckId);
+  state.shadowIndex = 0;
+  showOnly("shadow");
+  renderShadowCard();
+}
+
+function renderShadowCard() {
+  const c = state.shadowCards[state.shadowIndex];
+  $("#shadow-count").textContent = `Phrase ${state.shadowIndex + 1} of ${state.shadowCards.length}`;
+  $("#shadow-en").textContent = c.translation;
+  const nat = $("#shadow-native");
+  nat.textContent = c.native;
+  nat.classList.add("blur");
+  const fb = $("#shadow-feedback");
+  fb.className = "practice-feedback";
+  fb.textContent = "";
+  $("#shadow-say").textContent = "🎤 Say it back";
+  $("#shadow-say").disabled = false;
+  speak(c.native, state.current.speech_lang);  // the "tape" plays
+}
+
+function shadowSay() {
+  const fb = $("#shadow-feedback");
+  const c = state.shadowCards[state.shadowIndex];
+  if (!state.sttEnabled) {  // no server STT — self-paced, just reveal
+    $("#shadow-native").classList.remove("blur");
+    fb.className = "practice-feedback";
+    fb.textContent = "Say it out loud, then move on. 👍";
+    return;
+  }
+  toggleRecorder($("#shadow-say"), state.current.code, "⏹ Stop", "🎤 Say it back", (text, err) => {
+    if (err) { fb.className = "practice-feedback bad"; fb.textContent = err === "blocked" ? "🎤 Mic blocked." : "Speech service error."; return; }
+    $("#shadow-native").classList.remove("blur");
+    const ok = canon(text) && (canon(text).includes(canon(c.native)) || canon(c.native).includes(canon(text)));
+    fb.className = "practice-feedback " + (ok ? "ok" : "bad");
+    fb.innerHTML = (ok ? "✅ Nice!" : "❌ Close —") + ` <span class="heard">(heard: “${text || "…"}”)</span>`;
+  });
+}
+
+function shadowNext() {
+  state.shadowIndex++;
+  if (state.shadowIndex >= state.shadowCards.length) {
+    if (state.course) completeCourseStep();
+    else exitCourseStep();
+    return;
+  }
+  renderShadowCard();
+}
+
+/* --- Drill: deck-scoped flashcards (reuses the flashcard UI) --- */
+function startDrill(deckId) {
+  const cards = state.cards.filter((c) => c.deck === deckId).slice();
+  for (let i = cards.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [cards[i], cards[j]] = [cards[j], cards[i]]; }
+  state.flashQueue = cards;
+  state.flashIndex = 0;
+  showOnly("flashcards");
+  $("#flashEmpty").classList.add("hidden");
+  $("#flashcard").classList.remove("hidden");
+  renderFlashcard();
+}
+
+/* --- Listening test: audio only, self-checked --- */
+function startListeningTest(deckId) {
+  const cards = state.cards.filter((c) => c.deck === deckId).slice();
+  for (let i = cards.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [cards[i], cards[j]] = [cards[j], cards[i]]; }
+  state.ltCards = cards;
+  state.ltIndex = 0;
+  state.ltScore = 0;
+  showOnly("listentest");
+  renderLtCard();
+}
+
+function renderLtCard() {
+  const c = state.ltCards[state.ltIndex];
+  $("#lt-count").textContent = `Item ${state.ltIndex + 1} of ${state.ltCards.length}`;
+  $("#lt-prompt").textContent = "What does it mean? Say it out loud, then reveal.";
+  $("#lt-play").textContent = "🔊 Listen";
+  const rev = $("#lt-reveal");
+  rev.classList.add("hidden");
+  rev.innerHTML = "";
+  $("#lt-grade-row").innerHTML = `<button class="btn ghost" id="lt-show">Reveal</button>`;
+  $("#lt-show").addEventListener("click", ltReveal);
+  speak(c.native, state.current.speech_lang);
+}
+
+function ltReveal() {
+  const c = state.ltCards[state.ltIndex];
+  const rev = $("#lt-reveal");
+  rev.classList.remove("hidden");
+  rev.innerHTML = `<div class="lt-native">${c.native}</div>${state.current.has_reading ? `<div class="reading">${c.reading}</div>` : ""}<div class="lt-en">${c.translation}</div>`;
+  $("#lt-grade-row").innerHTML = `
+    <button class="btn" id="lt-miss">✗ Missed</button>
+    <button class="btn primary" id="lt-got">✓ Understood</button>`;
+  $("#lt-got").addEventListener("click", () => ltGrade(true));
+  $("#lt-miss").addEventListener("click", () => ltGrade(false));
+}
+
+function ltGrade(ok) {
+  if (ok) state.ltScore++;
+  state.ltIndex++;
+  if (state.ltIndex >= state.ltCards.length) ltFinish();
+  else renderLtCard();
+}
+
+function ltFinish() {
+  const pct = Math.round((100 * state.ltScore) / state.ltCards.length);
+  $("#lt-count").textContent = "Test complete";
+  $("#lt-play").style.display = "none";
+  $("#lt-prompt").innerHTML = `🎧 You understood <strong>${state.ltScore} of ${state.ltCards.length}</strong> by ear (${pct}%).`;
+  $("#lt-reveal").classList.add("hidden");
+  $("#lt-grade-row").innerHTML = `<button class="btn primary" id="lt-done">Finish → back to class</button>`;
+  $("#lt-done").addEventListener("click", () => {
+    $("#lt-play").style.display = "";
+    if (state.course) completeCourseStep(); else exitCourseStep();
+  });
+}
+
+/* ------------------------------------------------------------------ */
 /* Progress                                                            */
 /* ------------------------------------------------------------------ */
 async function renderProgress() {
@@ -620,6 +882,16 @@ function init() {
   $("#speakSkip").addEventListener("click", nextSpeak);
 
   $("#rp-back").addEventListener("click", renderRoleplayHome);
+  $("#rp-listen").addEventListener("change", (e) => { state.rpListening = e.target.checked; });
+
+  // Tape (shadowing)
+  $("#shadow-hear").addEventListener("click", () => speak(state.shadowCards[state.shadowIndex].native, state.current.speech_lang));
+  $("#shadow-say").addEventListener("click", shadowSay);
+  $("#shadow-reveal").addEventListener("click", () => $("#shadow-native").classList.remove("blur"));
+  $("#shadow-next").addEventListener("click", shadowNext);
+
+  // Listening test
+  $("#lt-play").addEventListener("click", () => speak(state.ltCards[state.ltIndex].native, state.current.speech_lang));
 
   $("#writeCheck").addEventListener("click", checkWrite);
   $("#writeReveal").addEventListener("click", revealWrite);

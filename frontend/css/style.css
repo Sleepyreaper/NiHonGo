@@ -172,6 +172,37 @@ body {
 .progress-bar > div { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); width: 0; transition: width 0.6s ease; }
 .progress-caption { text-align: center; color: var(--muted); margin-top: 10px; }
 
+/* Course / weekly class */
+.course-banner { display: flex; align-items: center; gap: 14px; background: linear-gradient(90deg, var(--card-2), var(--card)); border: 1px solid var(--accent); border-radius: 12px; padding: 10px 16px; margin-bottom: 18px; }
+.course-banner .cb-label { font-weight: 700; }
+.course-banner .cb-sub { color: var(--muted); font-size: 14px; }
+.course-banner .cb-actions { margin-left: auto; display: flex; gap: 8px; }
+.course-weeks { display: flex; flex-direction: column; gap: 14px; }
+.week { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; }
+.week.current { border-color: var(--accent); box-shadow: var(--shadow); }
+.week.done { opacity: 0.72; }
+.week-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 12px; }
+.week-num { font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-2); }
+.week-name { font-size: 19px; font-weight: 800; }
+.week-desc { color: var(--muted); font-size: 14px; margin-left: auto; }
+.week-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.step-btn { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 12px 6px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg-soft); color: var(--text); cursor: pointer; font-weight: 600; font-size: 13px; }
+.step-btn:hover { border-color: var(--accent); }
+.step-btn.done { border-color: var(--good); }
+.step-btn .step-check { font-size: 15px; color: var(--good); min-height: 18px; }
+.step-btn.next { background: var(--accent); color: #0f1220; border-color: var(--accent); }
+@media (max-width: 620px) { .week-steps { grid-template-columns: repeat(2, 1fr); } .week-desc { display: none; } }
+
+.shadow-native { font-size: 30px; font-weight: 800; min-height: 40px; letter-spacing: .5px; }
+.shadow-native.blur { filter: blur(9px); user-select: none; }
+.lt-reveal { font-size: 15px; }
+.lt-reveal .lt-native { font-size: 30px; font-weight: 800; }
+.lt-reveal .lt-en { color: var(--muted); margin-top: 6px; }
+
+.rp-listen-toggle { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); cursor: pointer; user-select: none; }
+.bubble .say.masked { filter: blur(8px); cursor: pointer; }
+.bubble .reveal-hint { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
 /* Roleplay */
 .rp-card { cursor: pointer; }
 .rp-card .rp-badge { display: inline-block; font-size: 12px; color: var(--accent-2); border: 1px solid var(--line); border-radius: 999px; padding: 2px 10px; margin-top: 10px; }

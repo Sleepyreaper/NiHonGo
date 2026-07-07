@@ -15,6 +15,7 @@
       <span class="brand-name">NiHonGo</span>
     </div>
     <nav id="nav" class="nav hidden">
+      <button class="nav-btn" data-view="course">🎓 Class</button>
       <button class="nav-btn" data-view="learn">📖 Learn</button>
       <button class="nav-btn" data-view="flashcards">🃏 Flashcards</button>
       <button class="nav-btn" data-view="speak">🎤 Speak</button>
@@ -26,6 +27,8 @@
   </header>
 
   <main id="app">
+    <div id="course-banner" class="course-banner hidden"></div>
+
     <!-- Language picker -->
     <section id="view-home" class="view">
       <h1 class="hero-title">What do you want to learn today?</h1>
@@ -82,11 +85,50 @@
         <div class="rp-bar">
           <button class="btn ghost" id="rp-back">← Scenarios</button>
           <span id="rp-title" class="rp-title"></span>
+          <label class="rp-listen-toggle"><input type="checkbox" id="rp-listen" /> 🎧 Listening mode</label>
           <span id="rp-progress" class="rp-progress"></span>
         </div>
         <div id="rp-chat" class="rp-chat"></div>
         <div id="rp-input" class="rp-input"></div>
       </div>
+    </section>
+
+    <!-- Course / weekly class -->
+    <section id="view-course" class="view hidden">
+      <h1 class="section-title" id="course-title">Your class</h1>
+      <p class="hero-sub" style="text-align:left;margin:0 0 22px">One unit a week — learn it, shadow the tape, drill it, then a listening test.</p>
+      <div id="course-weeks" class="course-weeks"></div>
+    </section>
+
+    <!-- Tape / shadowing -->
+    <section id="view-shadow" class="view hidden">
+      <div class="practice-card">
+        <div class="flash-progress" id="shadow-count"></div>
+        <div class="practice-prompt"><span class="cue" id="shadow-en"></span></div>
+        <div class="shadow-native" id="shadow-native"></div>
+        <button class="btn ghost" id="shadow-hear">🔊 Hear it again</button>
+        <button class="btn primary big" id="shadow-say">🎤 Say it back</button>
+        <div class="practice-feedback" id="shadow-feedback"></div>
+        <div class="practice-nav">
+          <button class="btn ghost" id="shadow-reveal">Show text</button>
+          <button class="btn ghost" id="shadow-next">Next →</button>
+        </div>
+      </div>
+      <p class="note" id="shadow-note">Listen, then say it back out loud — like the tape.</p>
+    </section>
+
+    <!-- Listening test -->
+    <section id="view-listentest" class="view hidden">
+      <div class="practice-card">
+        <div class="flash-progress" id="lt-count"></div>
+        <button class="btn primary big" id="lt-play">🔊 Listen</button>
+        <div class="practice-prompt" id="lt-prompt">What does it mean? Say it out loud, then reveal.</div>
+        <div class="lt-reveal hidden" id="lt-reveal"></div>
+        <div class="practice-nav" id="lt-grade-row">
+          <button class="btn ghost" id="lt-show">Reveal</button>
+        </div>
+      </div>
+      <p class="note">Audio only — train your ear, then check yourself.</p>
     </section>
 
     <!-- Write -->
