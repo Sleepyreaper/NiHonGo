@@ -42,6 +42,16 @@ async function api(path, opts) {
   return res.json();
 }
 
+/* A card's picture: a file/URL (generated illustration) or an emoji. */
+function cardImage(card, cls) {
+  const v = card && card.image;
+  if (!v) return "";
+  const isFile = v.startsWith("http") || v.includes("/") || v.includes(".");
+  return isFile
+    ? `<img class="card-img ${cls || ""}" src="${v}" alt="" loading="lazy" onerror="this.remove()">`
+    : `<span class="card-emoji ${cls || ""}">${v}</span>`;
+}
+
 /* ------------------------------------------------------------------ */
 /* Speech (Web Speech API)                                             */
 /* ------------------------------------------------------------------ */
@@ -173,10 +183,13 @@ async function renderLearn() {
     const el = document.createElement("div");
     el.className = "vocab";
     el.innerHTML = `
-      <div>
-        <div class="native">${card.native}</div>
-        ${state.current.has_reading ? `<div class="reading">${card.reading}</div>` : ""}
-        <div class="translation">${card.translation}</div>
+      <div class="vocab-main">
+        ${cardImage(card, "vocab-img")}
+        <div>
+          <div class="native">${card.native}</div>
+          ${state.current.has_reading ? `<div class="reading">${card.reading}</div>` : ""}
+          <div class="translation">${card.translation}</div>
+        </div>
       </div>
       <button class="speak-btn" title="Hear it">🔊</button>`;
     el.querySelector(".speak-btn").addEventListener("click", () => speak(card.native, state.current.speech_lang));
@@ -204,7 +217,7 @@ function renderFlashcard() {
   const card = state.flashQueue[state.flashIndex];
   state.flashFlipped = false;
   $("#flashProgress").textContent = `Card ${state.flashIndex + 1} of ${state.flashQueue.length}`;
-  $("#flashPrompt").innerHTML = `<div class="en-cue">${card.translation}</div>`;
+  $("#flashPrompt").innerHTML = `${cardImage(card, "flash-img")}<div class="en-cue">${card.translation}</div>`;
   $("#flashFace").querySelector(".flash-hint").textContent = "Tap the card to flip";
   $("#flashControls").classList.add("hidden");
 }
@@ -266,6 +279,7 @@ function nextSpeak() {
   state.speakCard = randomCard();
   const c = state.speakCard;
   $("#speakTarget").innerHTML = `
+    ${cardImage(c, "practice-img")}
     <div class="native">${c.native}</div>
     ${state.current.has_reading ? `<div class="reading">${c.reading}</div>` : ""}
     <div class="translation">${c.translation}</div>`;
@@ -739,7 +753,7 @@ function startShadow(deckId) {
 function renderShadowCard() {
   const c = state.shadowCards[state.shadowIndex];
   $("#shadow-count").textContent = `Phrase ${state.shadowIndex + 1} of ${state.shadowCards.length}`;
-  $("#shadow-en").textContent = c.translation;
+  $("#shadow-en").innerHTML = cardImage(c, "practice-img") + c.translation;
   const nat = $("#shadow-native");
   nat.textContent = c.native;
   nat.classList.add("blur");
@@ -819,7 +833,7 @@ function ltReveal() {
   const c = state.ltCards[state.ltIndex];
   const rev = $("#lt-reveal");
   rev.classList.remove("hidden");
-  rev.innerHTML = `<div class="lt-native">${c.native}</div>${state.current.has_reading ? `<div class="reading">${c.reading}</div>` : ""}<div class="lt-en">${c.translation}</div>`;
+  rev.innerHTML = `${cardImage(c, "practice-img")}<div class="lt-native">${c.native}</div>${state.current.has_reading ? `<div class="reading">${c.reading}</div>` : ""}<div class="lt-en">${c.translation}</div>`;
   $("#lt-grade-row").innerHTML = `
     <button class="btn" id="lt-miss">✗ Missed</button>
     <button class="btn primary" id="lt-got">✓ Understood</button>`;

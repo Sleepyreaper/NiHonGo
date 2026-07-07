@@ -51,7 +51,7 @@
         {"id": "ja-f-01", "native": "水", "reading": "mizu", "translation": "water"},
         {"id": "ja-f-02", "native": "お茶", "reading": "ocha", "translation": "tea"},
         {"id": "ja-f-03", "native": "ご飯", "reading": "gohan", "translation": "rice / meal"},
-        {"id": "ja-f-04", "native": "寿司", "reading": "sushi", "translation": "sushi"},
+        {"id": "ja-f-04", "native": "寿司", "reading": "sushi", "translation": "sushi", "img_prompt": "a plate of nigiri sushi"},
         {"id": "ja-f-05", "native": "美味しい", "reading": "oishii", "translation": "delicious"},
         {"id": "ja-f-06", "native": "いただきます", "reading": "itadakimasu", "translation": "Let's eat (thanks for the meal)"},
         {"id": "ja-f-07", "native": "お腹が空きました", "reading": "onaka ga sukimashita", "translation": "I'm hungry"},

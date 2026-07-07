@@ -91,6 +91,17 @@ body {
 }
 .deck-chip.active { background: var(--accent); color: #0f1220; border-color: var(--accent); }
 
+/* Card pictures (generated illustrations or emoji) */
+.card-img { display: block; object-fit: cover; border-radius: 12px; background: var(--bg-soft); }
+.card-emoji { display: block; line-height: 1; }
+.flash-img { width: 200px; height: 200px; margin: 0 auto 14px; }
+span.flash-img { font-size: 120px; text-align: center; }
+.practice-img { width: 160px; height: 160px; margin: 0 auto 12px; }
+span.practice-img { font-size: 96px; text-align: center; }
+.vocab-main { display: flex; align-items: center; gap: 12px; }
+.vocab-img { width: 52px; height: 52px; min-width: 52px; }
+span.vocab-img { font-size: 40px; width: auto; }
+
 /* Card list (learn) */
 .card-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
 .vocab {

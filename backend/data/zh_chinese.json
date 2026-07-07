@@ -52,8 +52,8 @@
       "description": "Eat and drink your way around.",
       "cards": [
         {"id": "zh-f-01", "native": "水", "reading": "shuǐ", "translation": "water"},
-        {"id": "zh-f-02", "native": "茶", "reading": "chá", "translation": "tea"},
-        {"id": "zh-f-03", "native": "咖啡", "reading": "kāfēi", "translation": "coffee"},
+        {"id": "zh-f-02", "native": "茶", "reading": "chá", "translation": "tea", "img_prompt": "a cup of hot green tea"},
+        {"id": "zh-f-03", "native": "咖啡", "reading": "kāfēi", "translation": "coffee", "img_prompt": "a cup of coffee"},
         {"id": "zh-f-04", "native": "米饭", "reading": "mǐfàn", "translation": "cooked rice"},
         {"id": "zh-f-05", "native": "面条", "reading": "miàntiáo", "translation": "noodles"},
         {"id": "zh-f-06", "native": "鸡肉", "reading": "jīròu", "translation": "chicken"},

@@ -12,7 +12,7 @@
       "name": "U1 · Head start",
       "description": "Talk from day one — survival phrases + cognate patterns.",
       "cards": [
-        {"id": "es-u1-01", "native": "Hola, ¿qué tal?", "reading": "OH-lah keh TAHL", "translation": "Hi, how's it going?"},
+        {"id": "es-u1-01", "native": "Hola, ¿qué tal?", "reading": "OH-lah keh TAHL", "translation": "Hi, how's it going?", "img_prompt": "a friendly person smiling and waving hello"},
         {"id": "es-u1-02", "native": "No entiendo", "reading": "no en-TYEN-do", "translation": "I don't understand"},
         {"id": "es-u1-03", "native": "¿Cómo se dice...?", "reading": "KOH-mo seh DEE-seh", "translation": "How do you say...?"},
         {"id": "es-u1-04", "native": "¿Puedes repetir, por favor?", "reading": "PWEH-des reh-peh-TEER", "translation": "Can you repeat, please?"},
@@ -50,10 +50,10 @@
       "description": "Ask for things and order. (querer, tener, hay)",
       "cards": [
         {"id": "es-u3-01", "native": "Quiero...", "reading": "KYEH-ro", "translation": "I want..."},
-        {"id": "es-u3-02", "native": "Quisiera un café", "reading": "kee-SYEH-rah oon kah-FEH", "translation": "I'd like a coffee (polite)"},
+        {"id": "es-u3-02", "native": "Quisiera un café", "reading": "kee-SYEH-rah oon kah-FEH", "translation": "I'd like a coffee (polite)", "img_prompt": "a steaming cup of coffee on a saucer"},
         {"id": "es-u3-03", "native": "Necesito...", "reading": "neh-seh-SEE-to", "translation": "I need..."},
         {"id": "es-u3-04", "native": "¿Me da un jugo, por favor?", "reading": "meh dah oon HOO-go", "translation": "Can I have a juice, please?"},
-        {"id": "es-u3-05", "native": "Para mí, un agua", "reading": "PAH-rah mee oon AH-gwah", "translation": "For me, a water"},
+        {"id": "es-u3-05", "native": "Para mí, un agua", "reading": "PAH-rah mee oon AH-gwah", "translation": "For me, a water", "img_prompt": "a tall glass of clear water"},
         {"id": "es-u3-06", "native": "¿Tienen...?", "reading": "TYEH-nen", "translation": "Do you have...?"},
         {"id": "es-u3-07", "native": "Hay... / No hay...", "reading": "eye / no eye", "translation": "There is / There isn't..."},
         {"id": "es-u3-08", "native": "La cuenta, por favor", "reading": "lah KWEN-tah", "translation": "The check, please"},
@@ -70,13 +70,13 @@
         {"id": "es-u4-01", "native": "¿Dónde está...?", "reading": "DON-deh es-TAH", "translation": "Where is...?"},
         {"id": "es-u4-02", "native": "¿Cómo llego a...?", "reading": "KOH-mo YEH-go ah", "translation": "How do I get to...?"},
         {"id": "es-u4-03", "native": "Está cerca / lejos", "reading": "es-TAH SEHR-kah / LEH-hos", "translation": "It's near / far"},
-        {"id": "es-u4-04", "native": "a la derecha", "reading": "ah lah deh-REH-chah", "translation": "to the right"},
+        {"id": "es-u4-04", "native": "a la derecha", "reading": "ah lah deh-REH-chah", "translation": "to the right", "img_prompt": "a bold arrow pointing to the right"},
         {"id": "es-u4-05", "native": "a la izquierda", "reading": "ah lah ees-KYEHR-dah", "translation": "to the left"},
         {"id": "es-u4-06", "native": "todo derecho", "reading": "TOH-do deh-REH-cho", "translation": "straight ahead"},
         {"id": "es-u4-07", "native": "Voy a tomar un taxi", "reading": "voy ah to-MAR oon TAHK-see", "translation": "I'm going to take a taxi"},
         {"id": "es-u4-08", "native": "¿Está lejos de aquí?", "reading": "es-TAH LEH-hos deh ah-KEE", "translation": "Is it far from here?"},
         {"id": "es-u4-09", "native": "Estoy perdido / perdida", "reading": "es-TOY per-DEE-do", "translation": "I'm lost"},
-        {"id": "es-u4-10", "native": "¿Dónde queda el baño?", "reading": "DON-deh KEH-dah el BAH-nyo", "translation": "Where is the bathroom?"}
+        {"id": "es-u4-10", "native": "¿Dónde queda el baño?", "reading": "DON-deh KEH-dah el BAH-nyo", "translation": "Where is the bathroom?", "img_prompt": "a restroom sign with male and female icons"}
       ]
     },
     {
