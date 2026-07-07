@@ -12,18 +12,78 @@
       "name": "Greetings & Basics",
       "description": "Keep your Japanese sharp.",
       "cards": [
-        {"id": "ja-g-01", "native": "こんにちは", "reading": "konnichiwa", "translation": "Hello / Good afternoon"},
-        {"id": "ja-g-02", "native": "おはようございます", "reading": "ohayō gozaimasu", "translation": "Good morning"},
-        {"id": "ja-g-03", "native": "こんばんは", "reading": "konbanwa", "translation": "Good evening"},
-        {"id": "ja-g-04", "native": "お元気ですか？", "reading": "ogenki desu ka?", "translation": "How are you?"},
-        {"id": "ja-g-05", "native": "元気です", "reading": "genki desu", "translation": "I'm well"},
-        {"id": "ja-g-06", "native": "お名前は？", "reading": "onamae wa?", "translation": "What's your name?"},
-        {"id": "ja-g-07", "native": "はじめまして", "reading": "hajimemashite", "translation": "Nice to meet you"},
-        {"id": "ja-g-08", "native": "ありがとうございます", "reading": "arigatō gozaimasu", "translation": "Thank you"},
-        {"id": "ja-g-09", "native": "どういたしまして", "reading": "dō itashimashite", "translation": "You're welcome"},
-        {"id": "ja-g-10", "native": "すみません", "reading": "sumimasen", "translation": "Excuse me / Sorry"},
-        {"id": "ja-g-11", "native": "さようなら", "reading": "sayōnara", "translation": "Goodbye"},
-        {"id": "ja-g-12", "native": "はい / いいえ", "reading": "hai / iie", "translation": "Yes / No"}
+        {
+          "id": "ja-g-01",
+          "native": "こんにちは",
+          "reading": "konnichiwa",
+          "translation": "Hello / Good afternoon"
+        },
+        {
+          "id": "ja-g-02",
+          "native": "おはようございます",
+          "reading": "ohayō gozaimasu",
+          "translation": "Good morning"
+        },
+        {
+          "id": "ja-g-03",
+          "native": "こんばんは",
+          "reading": "konbanwa",
+          "translation": "Good evening"
+        },
+        {
+          "id": "ja-g-04",
+          "native": "お元気ですか？",
+          "reading": "ogenki desu ka?",
+          "translation": "How are you?"
+        },
+        {
+          "id": "ja-g-05",
+          "native": "元気です",
+          "reading": "genki desu",
+          "translation": "I'm well"
+        },
+        {
+          "id": "ja-g-06",
+          "native": "お名前は？",
+          "reading": "onamae wa?",
+          "translation": "What's your name?"
+        },
+        {
+          "id": "ja-g-07",
+          "native": "はじめまして",
+          "reading": "hajimemashite",
+          "translation": "Nice to meet you"
+        },
+        {
+          "id": "ja-g-08",
+          "native": "ありがとうございます",
+          "reading": "arigatō gozaimasu",
+          "translation": "Thank you"
+        },
+        {
+          "id": "ja-g-09",
+          "native": "どういたしまして",
+          "reading": "dō itashimashite",
+          "translation": "You're welcome"
+        },
+        {
+          "id": "ja-g-10",
+          "native": "すみません",
+          "reading": "sumimasen",
+          "translation": "Excuse me / Sorry"
+        },
+        {
+          "id": "ja-g-11",
+          "native": "さようなら",
+          "reading": "sayōnara",
+          "translation": "Goodbye"
+        },
+        {
+          "id": "ja-g-12",
+          "native": "はい / いいえ",
+          "reading": "hai / iie",
+          "translation": "Yes / No"
+        }
       ]
     },
     {
@@ -31,16 +91,66 @@
       "name": "Numbers 1–10",
       "description": "Counting in Japanese.",
       "cards": [
-        {"id": "ja-n-01", "native": "一", "reading": "ichi", "translation": "one"},
-        {"id": "ja-n-02", "native": "二", "reading": "ni", "translation": "two"},
-        {"id": "ja-n-03", "native": "三", "reading": "san", "translation": "three"},
-        {"id": "ja-n-04", "native": "四", "reading": "shi / yon", "translation": "four"},
-        {"id": "ja-n-05", "native": "五", "reading": "go", "translation": "five"},
-        {"id": "ja-n-06", "native": "六", "reading": "roku", "translation": "six"},
-        {"id": "ja-n-07", "native": "七", "reading": "shichi / nana", "translation": "seven"},
-        {"id": "ja-n-08", "native": "八", "reading": "hachi", "translation": "eight"},
-        {"id": "ja-n-09", "native": "九", "reading": "kyū / ku", "translation": "nine"},
-        {"id": "ja-n-10", "native": "十", "reading": "jū", "translation": "ten"}
+        {
+          "id": "ja-n-01",
+          "native": "一",
+          "reading": "ichi",
+          "translation": "one"
+        },
+        {
+          "id": "ja-n-02",
+          "native": "二",
+          "reading": "ni",
+          "translation": "two"
+        },
+        {
+          "id": "ja-n-03",
+          "native": "三",
+          "reading": "san",
+          "translation": "three"
+        },
+        {
+          "id": "ja-n-04",
+          "native": "四",
+          "reading": "shi / yon",
+          "translation": "four"
+        },
+        {
+          "id": "ja-n-05",
+          "native": "五",
+          "reading": "go",
+          "translation": "five"
+        },
+        {
+          "id": "ja-n-06",
+          "native": "六",
+          "reading": "roku",
+          "translation": "six"
+        },
+        {
+          "id": "ja-n-07",
+          "native": "七",
+          "reading": "shichi / nana",
+          "translation": "seven"
+        },
+        {
+          "id": "ja-n-08",
+          "native": "八",
+          "reading": "hachi",
+          "translation": "eight"
+        },
+        {
+          "id": "ja-n-09",
+          "native": "九",
+          "reading": "kyū / ku",
+          "translation": "nine"
+        },
+        {
+          "id": "ja-n-10",
+          "native": "十",
+          "reading": "jū",
+          "translation": "ten"
+        }
       ]
     },
     {
@@ -48,14 +158,56 @@
       "name": "Food & Drink",
       "description": "Mealtime vocabulary.",
       "cards": [
-        {"id": "ja-f-01", "native": "水", "reading": "mizu", "translation": "water"},
-        {"id": "ja-f-02", "native": "お茶", "reading": "ocha", "translation": "tea"},
-        {"id": "ja-f-03", "native": "ご飯", "reading": "gohan", "translation": "rice / meal"},
-        {"id": "ja-f-04", "native": "寿司", "reading": "sushi", "translation": "sushi", "img_prompt": "a plate of nigiri sushi"},
-        {"id": "ja-f-05", "native": "美味しい", "reading": "oishii", "translation": "delicious"},
-        {"id": "ja-f-06", "native": "いただきます", "reading": "itadakimasu", "translation": "Let's eat (thanks for the meal)"},
-        {"id": "ja-f-07", "native": "お腹が空きました", "reading": "onaka ga sukimashita", "translation": "I'm hungry"},
-        {"id": "ja-f-08", "native": "お会計をお願いします", "reading": "okaikei o onegaishimasu", "translation": "The check, please"}
+        {
+          "id": "ja-f-01",
+          "native": "水",
+          "reading": "mizu",
+          "translation": "water"
+        },
+        {
+          "id": "ja-f-02",
+          "native": "お茶",
+          "reading": "ocha",
+          "translation": "tea"
+        },
+        {
+          "id": "ja-f-03",
+          "native": "ご飯",
+          "reading": "gohan",
+          "translation": "rice / meal"
+        },
+        {
+          "id": "ja-f-04",
+          "native": "寿司",
+          "reading": "sushi",
+          "translation": "sushi",
+          "img_prompt": "a plate of nigiri sushi",
+          "image": "/img/ja/ja-f-04.png"
+        },
+        {
+          "id": "ja-f-05",
+          "native": "美味しい",
+          "reading": "oishii",
+          "translation": "delicious"
+        },
+        {
+          "id": "ja-f-06",
+          "native": "いただきます",
+          "reading": "itadakimasu",
+          "translation": "Let's eat (thanks for the meal)"
+        },
+        {
+          "id": "ja-f-07",
+          "native": "お腹が空きました",
+          "reading": "onaka ga sukimashita",
+          "translation": "I'm hungry"
+        },
+        {
+          "id": "ja-f-08",
+          "native": "お会計をお願いします",
+          "reading": "okaikei o onegaishimasu",
+          "translation": "The check, please"
+        }
       ]
     },
     {
@@ -63,12 +215,42 @@
       "name": "Everyday Phrases",
       "description": "Useful sentences to review.",
       "cards": [
-        {"id": "ja-p-01", "native": "わかりません", "reading": "wakarimasen", "translation": "I don't understand"},
-        {"id": "ja-p-02", "native": "英語を話せますか？", "reading": "eigo o hanasemasu ka?", "translation": "Do you speak English?"},
-        {"id": "ja-p-03", "native": "トイレはどこですか？", "reading": "toire wa doko desu ka?", "translation": "Where is the bathroom?"},
-        {"id": "ja-p-04", "native": "いくらですか？", "reading": "ikura desu ka?", "translation": "How much is it?"},
-        {"id": "ja-p-05", "native": "もう一度お願いします", "reading": "mō ichido onegaishimasu", "translation": "One more time, please"},
-        {"id": "ja-p-06", "native": "日本語を勉強しています", "reading": "nihongo o benkyō shite imasu", "translation": "I'm studying Japanese"}
+        {
+          "id": "ja-p-01",
+          "native": "わかりません",
+          "reading": "wakarimasen",
+          "translation": "I don't understand"
+        },
+        {
+          "id": "ja-p-02",
+          "native": "英語を話せますか？",
+          "reading": "eigo o hanasemasu ka?",
+          "translation": "Do you speak English?"
+        },
+        {
+          "id": "ja-p-03",
+          "native": "トイレはどこですか？",
+          "reading": "toire wa doko desu ka?",
+          "translation": "Where is the bathroom?"
+        },
+        {
+          "id": "ja-p-04",
+          "native": "いくらですか？",
+          "reading": "ikura desu ka?",
+          "translation": "How much is it?"
+        },
+        {
+          "id": "ja-p-05",
+          "native": "もう一度お願いします",
+          "reading": "mō ichido onegaishimasu",
+          "translation": "One more time, please"
+        },
+        {
+          "id": "ja-p-06",
+          "native": "日本語を勉強しています",
+          "reading": "nihongo o benkyō shite imasu",
+          "translation": "I'm studying Japanese"
+        }
       ]
     }
   ]

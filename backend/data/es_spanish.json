@@ -12,18 +12,80 @@
       "name": "U1 · Head start",
       "description": "Talk from day one — survival phrases + cognate patterns.",
       "cards": [
-        {"id": "es-u1-01", "native": "Hola, ¿qué tal?", "reading": "OH-lah keh TAHL", "translation": "Hi, how's it going?", "img_prompt": "a friendly person smiling and waving hello"},
-        {"id": "es-u1-02", "native": "No entiendo", "reading": "no en-TYEN-do", "translation": "I don't understand"},
-        {"id": "es-u1-03", "native": "¿Cómo se dice...?", "reading": "KOH-mo seh DEE-seh", "translation": "How do you say...?"},
-        {"id": "es-u1-04", "native": "¿Puedes repetir, por favor?", "reading": "PWEH-des reh-peh-TEER", "translation": "Can you repeat, please?"},
-        {"id": "es-u1-05", "native": "Más despacio, por favor", "reading": "mas des-PAH-syo", "translation": "Slower, please"},
-        {"id": "es-u1-06", "native": "¿Qué significa...?", "reading": "keh sig-nee-FEE-kah", "translation": "What does ... mean?"},
-        {"id": "es-u1-07", "native": "Perdón / Disculpe", "reading": "per-DON / dees-KOOL-peh", "translation": "Sorry / Excuse me"},
-        {"id": "es-u1-08", "native": "Gracias / De nada", "reading": "GRAH-syas / deh NAH-dah", "translation": "Thanks / You're welcome"},
-        {"id": "es-u1-09", "native": "información, nación, atención", "reading": "", "translation": "Cognates: -ción = English -tion"},
-        {"id": "es-u1-10", "native": "delicioso, famoso, generoso", "reading": "", "translation": "Cognates: -oso = English -ous"},
-        {"id": "es-u1-11", "native": "normalmente, exactamente", "reading": "", "translation": "Cognates: -mente = English -ly"},
-        {"id": "es-u1-12", "native": "universidad, ciudad, realidad", "reading": "", "translation": "Cognates: -dad = English -ty"}
+        {
+          "id": "es-u1-01",
+          "native": "Hola, ¿qué tal?",
+          "reading": "OH-lah keh TAHL",
+          "translation": "Hi, how's it going?",
+          "img_prompt": "a friendly person smiling and waving hello",
+          "image": "/img/es/es-u1-01.png"
+        },
+        {
+          "id": "es-u1-02",
+          "native": "No entiendo",
+          "reading": "no en-TYEN-do",
+          "translation": "I don't understand"
+        },
+        {
+          "id": "es-u1-03",
+          "native": "¿Cómo se dice...?",
+          "reading": "KOH-mo seh DEE-seh",
+          "translation": "How do you say...?"
+        },
+        {
+          "id": "es-u1-04",
+          "native": "¿Puedes repetir, por favor?",
+          "reading": "PWEH-des reh-peh-TEER",
+          "translation": "Can you repeat, please?"
+        },
+        {
+          "id": "es-u1-05",
+          "native": "Más despacio, por favor",
+          "reading": "mas des-PAH-syo",
+          "translation": "Slower, please"
+        },
+        {
+          "id": "es-u1-06",
+          "native": "¿Qué significa...?",
+          "reading": "keh sig-nee-FEE-kah",
+          "translation": "What does ... mean?"
+        },
+        {
+          "id": "es-u1-07",
+          "native": "Perdón / Disculpe",
+          "reading": "per-DON / dees-KOOL-peh",
+          "translation": "Sorry / Excuse me"
+        },
+        {
+          "id": "es-u1-08",
+          "native": "Gracias / De nada",
+          "reading": "GRAH-syas / deh NAH-dah",
+          "translation": "Thanks / You're welcome"
+        },
+        {
+          "id": "es-u1-09",
+          "native": "información, nación, atención",
+          "reading": "",
+          "translation": "Cognates: -ción = English -tion"
+        },
+        {
+          "id": "es-u1-10",
+          "native": "delicioso, famoso, generoso",
+          "reading": "",
+          "translation": "Cognates: -oso = English -ous"
+        },
+        {
+          "id": "es-u1-11",
+          "native": "normalmente, exactamente",
+          "reading": "",
+          "translation": "Cognates: -mente = English -ly"
+        },
+        {
+          "id": "es-u1-12",
+          "native": "universidad, ciudad, realidad",
+          "reading": "",
+          "translation": "Cognates: -dad = English -ty"
+        }
       ]
     },
     {
@@ -31,17 +93,72 @@
       "name": "U2 · Greetings & small talk",
       "description": "Meet people and keep a basic conversation going. (ser / estar)",
       "cards": [
-        {"id": "es-u2-01", "native": "¿Cómo estás?", "reading": "KOH-mo es-TAHS", "translation": "How are you?"},
-        {"id": "es-u2-02", "native": "Bien, ¿y tú?", "reading": "byen ee too", "translation": "Good, and you?"},
-        {"id": "es-u2-03", "native": "Más o menos", "reading": "mas o MEH-nos", "translation": "So-so"},
-        {"id": "es-u2-04", "native": "¿Cómo te llamas?", "reading": "KOH-mo teh YAH-mas", "translation": "What's your name?"},
-        {"id": "es-u2-05", "native": "Me llamo...", "reading": "meh YAH-mo", "translation": "My name is..."},
-        {"id": "es-u2-06", "native": "Mucho gusto", "reading": "MOO-cho GOOS-to", "translation": "Nice to meet you"},
-        {"id": "es-u2-07", "native": "¿De dónde eres?", "reading": "deh DON-deh EH-res", "translation": "Where are you from?"},
-        {"id": "es-u2-08", "native": "Soy de...", "reading": "soy deh", "translation": "I'm from..."},
-        {"id": "es-u2-09", "native": "¿A qué te dedicas?", "reading": "ah keh teh deh-DEE-kas", "translation": "What do you do (for work)?"},
-        {"id": "es-u2-10", "native": "Estoy cansado / cansada", "reading": "es-TOY kan-SAH-do", "translation": "I'm tired"},
-        {"id": "es-u2-11", "native": "Soy estadounidense", "reading": "soy es-tah-doh-oo-nee-DEN-seh", "translation": "I'm American"}
+        {
+          "id": "es-u2-01",
+          "native": "¿Cómo estás?",
+          "reading": "KOH-mo es-TAHS",
+          "translation": "How are you?"
+        },
+        {
+          "id": "es-u2-02",
+          "native": "Bien, ¿y tú?",
+          "reading": "byen ee too",
+          "translation": "Good, and you?"
+        },
+        {
+          "id": "es-u2-03",
+          "native": "Más o menos",
+          "reading": "mas o MEH-nos",
+          "translation": "So-so"
+        },
+        {
+          "id": "es-u2-04",
+          "native": "¿Cómo te llamas?",
+          "reading": "KOH-mo teh YAH-mas",
+          "translation": "What's your name?"
+        },
+        {
+          "id": "es-u2-05",
+          "native": "Me llamo...",
+          "reading": "meh YAH-mo",
+          "translation": "My name is..."
+        },
+        {
+          "id": "es-u2-06",
+          "native": "Mucho gusto",
+          "reading": "MOO-cho GOOS-to",
+          "translation": "Nice to meet you"
+        },
+        {
+          "id": "es-u2-07",
+          "native": "¿De dónde eres?",
+          "reading": "deh DON-deh EH-res",
+          "translation": "Where are you from?"
+        },
+        {
+          "id": "es-u2-08",
+          "native": "Soy de...",
+          "reading": "soy deh",
+          "translation": "I'm from..."
+        },
+        {
+          "id": "es-u2-09",
+          "native": "¿A qué te dedicas?",
+          "reading": "ah keh teh deh-DEE-kas",
+          "translation": "What do you do (for work)?"
+        },
+        {
+          "id": "es-u2-10",
+          "native": "Estoy cansado / cansada",
+          "reading": "es-TOY kan-SAH-do",
+          "translation": "I'm tired"
+        },
+        {
+          "id": "es-u2-11",
+          "native": "Soy estadounidense",
+          "reading": "soy es-tah-doh-oo-nee-DEN-seh",
+          "translation": "I'm American"
+        }
       ]
     },
     {
@@ -49,17 +166,76 @@
       "name": "U3 · I want / there is (café)",
       "description": "Ask for things and order. (querer, tener, hay)",
       "cards": [
-        {"id": "es-u3-01", "native": "Quiero...", "reading": "KYEH-ro", "translation": "I want..."},
-        {"id": "es-u3-02", "native": "Quisiera un café", "reading": "kee-SYEH-rah oon kah-FEH", "translation": "I'd like a coffee (polite)", "img_prompt": "a steaming cup of coffee on a saucer"},
-        {"id": "es-u3-03", "native": "Necesito...", "reading": "neh-seh-SEE-to", "translation": "I need..."},
-        {"id": "es-u3-04", "native": "¿Me da un jugo, por favor?", "reading": "meh dah oon HOO-go", "translation": "Can I have a juice, please?"},
-        {"id": "es-u3-05", "native": "Para mí, un agua", "reading": "PAH-rah mee oon AH-gwah", "translation": "For me, a water", "img_prompt": "a tall glass of clear water"},
-        {"id": "es-u3-06", "native": "¿Tienen...?", "reading": "TYEH-nen", "translation": "Do you have...?"},
-        {"id": "es-u3-07", "native": "Hay... / No hay...", "reading": "eye / no eye", "translation": "There is / There isn't..."},
-        {"id": "es-u3-08", "native": "La cuenta, por favor", "reading": "lah KWEN-tah", "translation": "The check, please"},
-        {"id": "es-u3-09", "native": "¿Cuánto es?", "reading": "KWAN-to es", "translation": "How much is it?"},
-        {"id": "es-u3-10", "native": "Está muy rico", "reading": "es-TAH mwee REE-ko", "translation": "It's delicious"},
-        {"id": "es-u3-11", "native": "Un momento, por favor", "reading": "oon mo-MEN-to", "translation": "One moment, please"}
+        {
+          "id": "es-u3-01",
+          "native": "Quiero...",
+          "reading": "KYEH-ro",
+          "translation": "I want..."
+        },
+        {
+          "id": "es-u3-02",
+          "native": "Quisiera un café",
+          "reading": "kee-SYEH-rah oon kah-FEH",
+          "translation": "I'd like a coffee (polite)",
+          "img_prompt": "a steaming cup of coffee on a saucer",
+          "image": "/img/es/es-u3-02.png"
+        },
+        {
+          "id": "es-u3-03",
+          "native": "Necesito...",
+          "reading": "neh-seh-SEE-to",
+          "translation": "I need..."
+        },
+        {
+          "id": "es-u3-04",
+          "native": "¿Me da un jugo, por favor?",
+          "reading": "meh dah oon HOO-go",
+          "translation": "Can I have a juice, please?"
+        },
+        {
+          "id": "es-u3-05",
+          "native": "Para mí, un agua",
+          "reading": "PAH-rah mee oon AH-gwah",
+          "translation": "For me, a water",
+          "img_prompt": "a tall glass of clear water",
+          "image": "/img/es/es-u3-05.png"
+        },
+        {
+          "id": "es-u3-06",
+          "native": "¿Tienen...?",
+          "reading": "TYEH-nen",
+          "translation": "Do you have...?"
+        },
+        {
+          "id": "es-u3-07",
+          "native": "Hay... / No hay...",
+          "reading": "eye / no eye",
+          "translation": "There is / There isn't..."
+        },
+        {
+          "id": "es-u3-08",
+          "native": "La cuenta, por favor",
+          "reading": "lah KWEN-tah",
+          "translation": "The check, please"
+        },
+        {
+          "id": "es-u3-09",
+          "native": "¿Cuánto es?",
+          "reading": "KWAN-to es",
+          "translation": "How much is it?"
+        },
+        {
+          "id": "es-u3-10",
+          "native": "Está muy rico",
+          "reading": "es-TAH mwee REE-ko",
+          "translation": "It's delicious"
+        },
+        {
+          "id": "es-u3-11",
+          "native": "Un momento, por favor",
+          "reading": "oon mo-MEN-to",
+          "translation": "One moment, please"
+        }
       ]
     },
     {
@@ -67,16 +243,70 @@
       "name": "U4 · Getting around",
       "description": "Directions and places. (ir, estar for location)",
       "cards": [
-        {"id": "es-u4-01", "native": "¿Dónde está...?", "reading": "DON-deh es-TAH", "translation": "Where is...?"},
-        {"id": "es-u4-02", "native": "¿Cómo llego a...?", "reading": "KOH-mo YEH-go ah", "translation": "How do I get to...?"},
-        {"id": "es-u4-03", "native": "Está cerca / lejos", "reading": "es-TAH SEHR-kah / LEH-hos", "translation": "It's near / far"},
-        {"id": "es-u4-04", "native": "a la derecha", "reading": "ah lah deh-REH-chah", "translation": "to the right", "img_prompt": "a bold arrow pointing to the right"},
-        {"id": "es-u4-05", "native": "a la izquierda", "reading": "ah lah ees-KYEHR-dah", "translation": "to the left"},
-        {"id": "es-u4-06", "native": "todo derecho", "reading": "TOH-do deh-REH-cho", "translation": "straight ahead"},
-        {"id": "es-u4-07", "native": "Voy a tomar un taxi", "reading": "voy ah to-MAR oon TAHK-see", "translation": "I'm going to take a taxi"},
-        {"id": "es-u4-08", "native": "¿Está lejos de aquí?", "reading": "es-TAH LEH-hos deh ah-KEE", "translation": "Is it far from here?"},
-        {"id": "es-u4-09", "native": "Estoy perdido / perdida", "reading": "es-TOY per-DEE-do", "translation": "I'm lost"},
-        {"id": "es-u4-10", "native": "¿Dónde queda el baño?", "reading": "DON-deh KEH-dah el BAH-nyo", "translation": "Where is the bathroom?", "img_prompt": "a restroom sign with male and female icons"}
+        {
+          "id": "es-u4-01",
+          "native": "¿Dónde está...?",
+          "reading": "DON-deh es-TAH",
+          "translation": "Where is...?"
+        },
+        {
+          "id": "es-u4-02",
+          "native": "¿Cómo llego a...?",
+          "reading": "KOH-mo YEH-go ah",
+          "translation": "How do I get to...?"
+        },
+        {
+          "id": "es-u4-03",
+          "native": "Está cerca / lejos",
+          "reading": "es-TAH SEHR-kah / LEH-hos",
+          "translation": "It's near / far"
+        },
+        {
+          "id": "es-u4-04",
+          "native": "a la derecha",
+          "reading": "ah lah deh-REH-chah",
+          "translation": "to the right",
+          "img_prompt": "a bold arrow pointing to the right",
+          "image": "/img/es/es-u4-04.png"
+        },
+        {
+          "id": "es-u4-05",
+          "native": "a la izquierda",
+          "reading": "ah lah ees-KYEHR-dah",
+          "translation": "to the left"
+        },
+        {
+          "id": "es-u4-06",
+          "native": "todo derecho",
+          "reading": "TOH-do deh-REH-cho",
+          "translation": "straight ahead"
+        },
+        {
+          "id": "es-u4-07",
+          "native": "Voy a tomar un taxi",
+          "reading": "voy ah to-MAR oon TAHK-see",
+          "translation": "I'm going to take a taxi"
+        },
+        {
+          "id": "es-u4-08",
+          "native": "¿Está lejos de aquí?",
+          "reading": "es-TAH LEH-hos deh ah-KEE",
+          "translation": "Is it far from here?"
+        },
+        {
+          "id": "es-u4-09",
+          "native": "Estoy perdido / perdida",
+          "reading": "es-TOY per-DEE-do",
+          "translation": "I'm lost"
+        },
+        {
+          "id": "es-u4-10",
+          "native": "¿Dónde queda el baño?",
+          "reading": "DON-deh KEH-dah el BAH-nyo",
+          "translation": "Where is the bathroom?",
+          "img_prompt": "a restroom sign with male and female icons",
+          "image": "/img/es/es-u4-10.png"
+        }
       ]
     },
     {
@@ -84,16 +314,66 @@
       "name": "U5 · Shopping & money",
       "description": "Prices, paying, numbers.",
       "cards": [
-        {"id": "es-u5-01", "native": "¿Cuánto cuesta?", "reading": "KWAN-to KWES-tah", "translation": "How much does it cost?"},
-        {"id": "es-u5-02", "native": "Es muy caro", "reading": "es mwee KAH-ro", "translation": "It's very expensive"},
-        {"id": "es-u5-03", "native": "¿Tiene algo más barato?", "reading": "TYEH-neh AHL-go mas bah-RAH-to", "translation": "Do you have anything cheaper?"},
-        {"id": "es-u5-04", "native": "Me llevo esto", "reading": "meh YEH-vo ES-to", "translation": "I'll take this"},
-        {"id": "es-u5-05", "native": "¿Aceptan tarjeta?", "reading": "ah-SEP-tan tar-HEH-tah", "translation": "Do you take card?"},
-        {"id": "es-u5-06", "native": "en efectivo", "reading": "en eh-fek-TEE-vo", "translation": "in cash"},
-        {"id": "es-u5-07", "native": "uno, dos, tres, cuatro, cinco", "reading": "", "translation": "1, 2, 3, 4, 5"},
-        {"id": "es-u5-08", "native": "seis, siete, ocho, nueve, diez", "reading": "", "translation": "6, 7, 8, 9, 10"},
-        {"id": "es-u5-09", "native": "veinte, cincuenta, cien", "reading": "", "translation": "20, 50, 100"},
-        {"id": "es-u5-10", "native": "¿Me da una bolsa?", "reading": "meh dah OO-nah BOL-sah", "translation": "Can I have a bag?"}
+        {
+          "id": "es-u5-01",
+          "native": "¿Cuánto cuesta?",
+          "reading": "KWAN-to KWES-tah",
+          "translation": "How much does it cost?"
+        },
+        {
+          "id": "es-u5-02",
+          "native": "Es muy caro",
+          "reading": "es mwee KAH-ro",
+          "translation": "It's very expensive"
+        },
+        {
+          "id": "es-u5-03",
+          "native": "¿Tiene algo más barato?",
+          "reading": "TYEH-neh AHL-go mas bah-RAH-to",
+          "translation": "Do you have anything cheaper?"
+        },
+        {
+          "id": "es-u5-04",
+          "native": "Me llevo esto",
+          "reading": "meh YEH-vo ES-to",
+          "translation": "I'll take this"
+        },
+        {
+          "id": "es-u5-05",
+          "native": "¿Aceptan tarjeta?",
+          "reading": "ah-SEP-tan tar-HEH-tah",
+          "translation": "Do you take card?"
+        },
+        {
+          "id": "es-u5-06",
+          "native": "en efectivo",
+          "reading": "en eh-fek-TEE-vo",
+          "translation": "in cash"
+        },
+        {
+          "id": "es-u5-07",
+          "native": "uno, dos, tres, cuatro, cinco",
+          "reading": "",
+          "translation": "1, 2, 3, 4, 5"
+        },
+        {
+          "id": "es-u5-08",
+          "native": "seis, siete, ocho, nueve, diez",
+          "reading": "",
+          "translation": "6, 7, 8, 9, 10"
+        },
+        {
+          "id": "es-u5-09",
+          "native": "veinte, cincuenta, cien",
+          "reading": "",
+          "translation": "20, 50, 100"
+        },
+        {
+          "id": "es-u5-10",
+          "native": "¿Me da una bolsa?",
+          "reading": "meh dah OO-nah BOL-sah",
+          "translation": "Can I have a bag?"
+        }
       ]
     },
     {
@@ -101,16 +381,66 @@
       "name": "U6 · Time & plans",
       "description": "The two power patterns: tener que + verb, ir a + verb.",
       "cards": [
-        {"id": "es-u6-01", "native": "¿Qué hora es?", "reading": "keh OH-rah es", "translation": "What time is it?"},
-        {"id": "es-u6-02", "native": "Son las tres", "reading": "son las tres", "translation": "It's three o'clock"},
-        {"id": "es-u6-03", "native": "Tengo que irme", "reading": "TEN-go keh EER-meh", "translation": "I have to go"},
-        {"id": "es-u6-04", "native": "Voy a comer", "reading": "voy ah ko-MEHR", "translation": "I'm going to eat"},
-        {"id": "es-u6-05", "native": "¿Quieres ir?", "reading": "KYEH-res eer", "translation": "Do you want to go?"},
-        {"id": "es-u6-06", "native": "¿Nos vemos mañana?", "reading": "nos VEH-mos mah-NYAH-nah", "translation": "See each other tomorrow?"},
-        {"id": "es-u6-07", "native": "hoy / mañana / ayer", "reading": "oy / mah-NYAH-nah / ah-YEHR", "translation": "today / tomorrow / yesterday"},
-        {"id": "es-u6-08", "native": "más tarde", "reading": "mas TAR-deh", "translation": "later"},
-        {"id": "es-u6-09", "native": "ahorita", "reading": "ah-o-REE-tah", "translation": "right now / in a bit (LatAm)"},
-        {"id": "es-u6-10", "native": "¿A qué hora?", "reading": "ah keh OH-rah", "translation": "At what time?"}
+        {
+          "id": "es-u6-01",
+          "native": "¿Qué hora es?",
+          "reading": "keh OH-rah es",
+          "translation": "What time is it?"
+        },
+        {
+          "id": "es-u6-02",
+          "native": "Son las tres",
+          "reading": "son las tres",
+          "translation": "It's three o'clock"
+        },
+        {
+          "id": "es-u6-03",
+          "native": "Tengo que irme",
+          "reading": "TEN-go keh EER-meh",
+          "translation": "I have to go"
+        },
+        {
+          "id": "es-u6-04",
+          "native": "Voy a comer",
+          "reading": "voy ah ko-MEHR",
+          "translation": "I'm going to eat"
+        },
+        {
+          "id": "es-u6-05",
+          "native": "¿Quieres ir?",
+          "reading": "KYEH-res eer",
+          "translation": "Do you want to go?"
+        },
+        {
+          "id": "es-u6-06",
+          "native": "¿Nos vemos mañana?",
+          "reading": "nos VEH-mos mah-NYAH-nah",
+          "translation": "See each other tomorrow?"
+        },
+        {
+          "id": "es-u6-07",
+          "native": "hoy / mañana / ayer",
+          "reading": "oy / mah-NYAH-nah / ah-YEHR",
+          "translation": "today / tomorrow / yesterday"
+        },
+        {
+          "id": "es-u6-08",
+          "native": "más tarde",
+          "reading": "mas TAR-deh",
+          "translation": "later"
+        },
+        {
+          "id": "es-u6-09",
+          "native": "ahorita",
+          "reading": "ah-o-REE-tah",
+          "translation": "right now / in a bit (LatAm)"
+        },
+        {
+          "id": "es-u6-10",
+          "native": "¿A qué hora?",
+          "reading": "ah keh OH-rah",
+          "translation": "At what time?"
+        }
       ]
     }
   ]
