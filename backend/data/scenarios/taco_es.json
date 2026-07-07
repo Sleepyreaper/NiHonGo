@@ -1,0 +1,76 @@
+{
+  "id": "taco-houston",
+  "language": "es",
+  "speech_lang": "es-MX",
+  "title": "🌮 Ordering tacos in Houston",
+  "level": "A1–A2",
+  "type": "transactional",
+  "intro": "A busy taquería in Houston — Spanish only. Walk up and order. The taquero's lines change each time, so you have to actually listen and respond.",
+  "partner": "Taquero",
+  "beats": [
+    {
+      "id": "greet",
+      "say": ["¡Buenas! ¿Qué le doy?", "¡Órale, joven! ¿Qué va a querer?", "¡Pásele! ¿Qué le preparo?"],
+      "say_en": "Hey! What can I get you?",
+      "hint": "Greet and start your order — say how many tacos and, if you want, what kind.",
+      "expect": ["taco", "tacos", "quiero", "me da", "dame", "quisiera", "para mi", "me pone"],
+      "model": "Hola, quiero tres tacos, por favor.",
+      "model_en": "Hi, I want three tacos, please."
+    },
+    {
+      "id": "meat",
+      "say": ["¿De qué se los pongo?", "¿De qué carne los quiere?", "¿De qué van a ser?"],
+      "say_en": "What kind (of meat) do you want them?",
+      "hint": "Pick a meat: pastor, asada, pollo, carnitas, suadero, barbacoa…",
+      "expect": ["pastor", "asada", "pollo", "carnitas", "suadero", "chorizo", "barbacoa", "lengua", "bistec", "de "],
+      "model": "De pastor, por favor.",
+      "model_en": "Al pastor, please."
+    },
+    {
+      "id": "extras",
+      "say": ["¿Con todo? ¿Cilantro y cebolla?", "¿Le pongo salsa? ¿Pica o no pica?", "¿Con todo y sus limones?"],
+      "say_en": "With everything? Cilantro and onion? / Spicy or not?",
+      "hint": "Say yes to everything, or ask for no onion / mild salsa.",
+      "expect": ["con todo", "si", "claro", "sin cebolla", "sin cilantro", "poco", "no pica", "salsa", "verde", "roja", "esta bien"],
+      "model": "Con todo, pero poca salsa, por favor.",
+      "model_en": "With everything, but not much salsa, please."
+    },
+    {
+      "id": "anything_else",
+      "say": ["¿Algo más?", "¿Se le ofrece algo más?", "¿Y de tomar?"],
+      "say_en": "Anything else? / And to drink?",
+      "hint": "Order a drink (agua, refresco, horchata) or say that's all.",
+      "expect": ["agua", "refresco", "coca", "horchata", "jugo", "no", "nada mas", "asi esta bien", "es todo", "gracias"],
+      "model": "Una horchata, y eso es todo.",
+      "model_en": "A horchata, and that's all."
+    },
+    {
+      "id": "here_or_go",
+      "say": ["¿Para aquí o para llevar?", "¿Se los empaco o come aquí?"],
+      "say_en": "For here or to go?",
+      "hint": "Answer: para aquí (here) or para llevar (to go).",
+      "expect": ["para llevar", "para aqui", "aqui", "llevar", "para aca", "me los llevo"],
+      "model": "Para llevar, por favor.",
+      "model_en": "To go, please."
+    },
+    {
+      "id": "pay",
+      "say": ["Son ciento veinte pesos.", "Le doy cuatro con cincuenta, joven.", "Son ciento diez, por favor."],
+      "say_en": "That's ... (the total).",
+      "hint": "Ask if they take card, or say here's the cash.",
+      "expect": ["tarjeta", "efectivo", "aqui tiene", "aqui esta", "toma", "acepta", "cambio", "gracias", "cuanto"],
+      "model": "¿Aceptan tarjeta? … Aquí tiene, gracias.",
+      "model_en": "Do you take card? … Here you go, thanks."
+    },
+    {
+      "id": "bye",
+      "say": ["¡Gracias, que le vaya bien!", "¡Buen provecho, vuelva pronto!"],
+      "say_en": "Thanks, take care! / Enjoy, come back soon!",
+      "hint": "Say thanks and goodbye.",
+      "expect": [],
+      "model": "¡Gracias, hasta luego!",
+      "model_en": "Thanks, see you later!"
+    }
+  ],
+  "outro": "¡Listo! You ordered, customized, and paid — entirely in Spanish. That's a real transaction handled. 🌮"
+}

@@ -11,12 +11,12 @@ from datetime import date
 from functools import lru_cache
 from pathlib import Path
 
-from fastapi import FastAPI, File, HTTPException, UploadFile
+from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
-from . import database, stt
+from . import database, scenarios, stt
 
 BASE_DIR = Path(__file__).resolve().parent
 DATA_DIR = BASE_DIR / "data"
@@ -179,6 +179,38 @@ async def speech_check(code: str, card_id: str, audio: UploadFile = File(...)) -
 
     ok = stt.matches(transcript, card["native"], card.get("reading", ""), code)
     return {"ok": ok, "transcript": transcript, "target": card["native"]}
+
+
+# --------------------------------------------------------------------------- #
+# Roleplay scenarios                                                          #
+# --------------------------------------------------------------------------- #
+@app.get("/api/scenarios")
+def list_scenarios(language: str | None = None) -> list[dict]:
+    items = scenarios.summaries()
+    if language:
+        items = [s for s in items if s["language"] == language]
+    return items
+
+
+@app.get("/api/scenarios/{scenario_id}")
+def get_scenario(scenario_id: str) -> dict:
+    s = scenarios.load_scenarios().get(scenario_id)
+    if s is None:
+        raise HTTPException(status_code=404, detail=f"Unknown scenario '{scenario_id}'")
+    return s
+
+
+@app.post("/api/stt")
+async def transcribe_audio(language: str = Form("en"), audio: UploadFile = File(...)) -> dict:
+    """Generic speech-to-text: recognize uploaded audio in the given language."""
+    if not stt.enabled():
+        raise HTTPException(status_code=503, detail="Speech recognition is not configured on this server")
+    data = await audio.read()
+    try:
+        transcript = await stt.transcribe(data, audio.filename, audio.content_type, language)
+    except Exception as exc:
+        raise HTTPException(status_code=502, detail=f"Speech service error: {exc}")
+    return {"transcript": transcript}
 
 
 @app.get("/api/health")

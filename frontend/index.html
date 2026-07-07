@@ -18,6 +18,7 @@
       <button class="nav-btn" data-view="learn">📖 Learn</button>
       <button class="nav-btn" data-view="flashcards">🃏 Flashcards</button>
       <button class="nav-btn" data-view="speak">🎤 Speak</button>
+      <button class="nav-btn" data-view="roleplay">🎭 Roleplay</button>
       <button class="nav-btn" data-view="write">✍️ Write</button>
       <button class="nav-btn" data-view="progress">📊 Progress</button>
     </nav>
@@ -68,6 +69,24 @@
         </div>
       </div>
       <p class="note" id="speakNote"></p>
+    </section>
+
+    <!-- Roleplay -->
+    <section id="view-roleplay" class="view hidden">
+      <div id="rp-home">
+        <h2 class="section-title">Roleplay a real situation</h2>
+        <p class="hero-sub" style="text-align:left;margin:0 0 20px">Talk your way through it — the other person's lines change each run.</p>
+        <div id="rp-list" class="card-list"></div>
+      </div>
+      <div id="rp-run" class="hidden">
+        <div class="rp-bar">
+          <button class="btn ghost" id="rp-back">← Scenarios</button>
+          <span id="rp-title" class="rp-title"></span>
+          <span id="rp-progress" class="rp-progress"></span>
+        </div>
+        <div id="rp-chat" class="rp-chat"></div>
+        <div id="rp-input" class="rp-input"></div>
+      </div>
     </section>
 
     <!-- Write -->

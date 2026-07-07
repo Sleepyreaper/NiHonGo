@@ -1,0 +1,67 @@
+{
+  "id": "cv-interview-zh",
+  "language": "zh",
+  "speech_lang": "zh-CN",
+  "title": "💼 面试：介绍你的简历",
+  "level": "A2–B1",
+  "type": "interview",
+  "intro": "An interviewer walks you through your background in Mandarin — an oral CV exam. Answer out loud in full sentences, then compare with the model answer (with pinyin).",
+  "partner": "面试官 (Interviewer)",
+  "beats": [
+    {
+      "id": "name",
+      "say": ["你好，请先做个自我介绍。你叫什么名字？", "请介绍一下你自己。"],
+      "say_en": "Please introduce yourself — what's your name?",
+      "hint": "Say your name and where you're from. (我叫… / 我来自…)",
+      "expect": ["我叫", "我是", "我来自", "名字"],
+      "model": "你好，我叫 ___，我来自美国。",
+      "model_en": "Hello, my name is ___, I'm from the United States. (nǐ hǎo, wǒ jiào ___, wǒ láizì měiguó)"
+    },
+    {
+      "id": "work",
+      "say": ["你现在做什么工作？", "请说说你的工作。"],
+      "say_en": "What do you do for work now?",
+      "hint": "Say your job. (我是… / 我做…)",
+      "expect": [],
+      "model": "我是 ___，主要负责 ___。",
+      "model_en": "I'm a ___, mainly responsible for ___. (wǒ shì ___, zhǔyào fùzé ___)"
+    },
+    {
+      "id": "experience",
+      "say": ["说说你的工作经验吧。你以前在哪里工作？", "你有什么经验？"],
+      "say_en": "Tell me about your experience — where did you work before?",
+      "hint": "Mention past work. (我以前在…工作)",
+      "expect": [],
+      "model": "我以前在 ___ 工作了 ___ 年。",
+      "model_en": "I worked at ___ for ___ years before. (wǒ yǐqián zài ___ gōngzuò le ___ nián)"
+    },
+    {
+      "id": "studies",
+      "say": ["你学的是什么专业？", "说说你的教育背景。"],
+      "say_en": "What did you study?",
+      "hint": "Say your major/school. (我学的是… / 我在…上大学)",
+      "expect": [],
+      "model": "我在 ___ 大学学的是 ___。",
+      "model_en": "I studied ___ at ___ university. (wǒ zài ___ dàxué xué de shì ___)"
+    },
+    {
+      "id": "strengths",
+      "say": ["你觉得你的优点是什么？", "我们为什么要选你？"],
+      "say_en": "What are your strengths? / Why should we choose you?",
+      "hint": "Name a strength. (我的优点是… / 我很…)",
+      "expect": [],
+      "model": "我的优点是认真、学得快，比如 ___。",
+      "model_en": "My strengths are being diligent and learning fast, for example ___. (wǒ de yōudiǎn shì rènzhēn, xué de kuài)"
+    },
+    {
+      "id": "why",
+      "say": ["最后，你为什么对这个感兴趣？", "你未来有什么打算？"],
+      "say_en": "Finally, why are you interested? / Future plans?",
+      "hint": "Give a reason or goal. (因为我想… / 我希望…)",
+      "expect": [],
+      "model": "因为我想 ___，我觉得我能 ___。",
+      "model_en": "Because I want to ___, I think I can ___. (yīnwèi wǒ xiǎng ___, wǒ juéde wǒ néng ___)"
+    }
+  ],
+  "outro": "你做得很好！ You talked through your whole CV in Mandarin. Repeat it a few times and it'll come out naturally. 💼"
+}

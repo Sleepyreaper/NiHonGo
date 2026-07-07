@@ -19,6 +19,11 @@ const state = {
   recording: false,
   mediaRecorder: null,
   chunks: [],
+  scenario: null,        // roleplay
+  beatIndex: 0,
+  rpRecording: false,
+  rpRecorder: null,
+  rpChunks: [],
 };
 
 /* ------------------------------------------------------------------ */
@@ -77,6 +82,7 @@ function showView(name) {
   if (name === "learn") renderLearn();
   if (name === "flashcards") startFlashcards();
   if (name === "speak") nextSpeak();
+  if (name === "roleplay") renderRoleplayHome();
   if (name === "write") nextWrite();
   if (name === "progress") renderProgress();
 }
@@ -407,6 +413,179 @@ function revealWrite() {
 }
 
 /* ------------------------------------------------------------------ */
+/* Roleplay (guided scenarios)                                         */
+/* ------------------------------------------------------------------ */
+function canon(s) { return stripTones(normalize(s)); }
+
+async function renderRoleplayHome() {
+  $("#rp-run").classList.add("hidden");
+  $("#rp-home").classList.remove("hidden");
+  const list = $("#rp-list");
+  list.innerHTML = "<p class='rp-hint'>Loading…</p>";
+  let scenarios = [];
+  try { scenarios = await api(`/scenarios?language=${state.current.code}`); } catch (e) { /* */ }
+  if (!scenarios.length) {
+    list.innerHTML = `<p class="empty">No roleplay scenarios for ${state.current.name} yet.</p>`;
+    return;
+  }
+  list.innerHTML = "";
+  for (const s of scenarios) {
+    const el = document.createElement("div");
+    el.className = "vocab rp-card";
+    el.style.display = "block";
+    el.innerHTML = `
+      <div class="native" style="font-size:18px">${s.title}</div>
+      <div class="rp-intro">${s.intro}</div>
+      <span class="rp-badge">${s.level} · ${s.beats} turns</span>`;
+    el.addEventListener("click", () => startScenario(s.id));
+    list.appendChild(el);
+  }
+}
+
+async function startScenario(id) {
+  try { state.scenario = await api(`/scenarios/${id}`); } catch (e) { return; }
+  state.beatIndex = 0;
+  $("#rp-home").classList.add("hidden");
+  $("#rp-run").classList.remove("hidden");
+  $("#rp-title").textContent = state.scenario.title;
+  $("#rp-chat").innerHTML = "";
+  $("#rp-input").innerHTML = "";
+  addBubble("system", `<em>${state.scenario.intro}</em>`);
+  playBeat();
+}
+
+function rpSpeechLang() { return state.scenario.speech_lang || state.current.speech_lang; }
+
+function addBubble(kind, html) {
+  const b = document.createElement("div");
+  b.className = `bubble ${kind}`;
+  b.innerHTML = html;
+  $("#rp-chat").appendChild(b);
+  b.scrollIntoView({ behavior: "smooth", block: "end" });
+  return b;
+}
+
+function playBeat() {
+  const beat = state.scenario.beats[state.beatIndex];
+  const line = beat.say[Math.floor(Math.random() * beat.say.length)];
+  $("#rp-progress").textContent = `Turn ${state.beatIndex + 1} of ${state.scenario.beats.length}`;
+  const b = addBubble("partner", `
+    <div class="who">${state.scenario.partner}</div>
+    <div class="say">${line} <button class="replay" title="Replay">🔊</button></div>
+    ${beat.say_en ? `<div class="say-en">${beat.say_en}</div>` : ""}`);
+  b.querySelector(".replay").addEventListener("click", () => speak(line, rpSpeechLang()));
+  speak(line, rpSpeechLang());
+  renderRpInput(beat);
+}
+
+function renderRpInput(beat) {
+  const box = $("#rp-input");
+  box.innerHTML = `
+    <div class="rp-hint">💬 ${beat.hint || "Respond in " + state.current.name + "."}</div>
+    <div class="rp-row">
+      <input type="text" id="rp-text" class="write-input" placeholder="Type your reply…" autocomplete="off" spellcheck="false" />
+      <button class="btn primary" id="rp-send">Send</button>
+    </div>
+    <div class="rp-actions">
+      ${state.sttEnabled ? '<button class="btn" id="rp-mic">🎤 Speak your reply</button>' : ""}
+      <button class="btn ghost" id="rp-skip">Show answer &amp; continue →</button>
+    </div>`;
+  const input = $("#rp-text");
+  input.focus();
+  input.addEventListener("keydown", (e) => { if (e.key === "Enter") handleResponse(input.value); });
+  $("#rp-send").addEventListener("click", () => handleResponse(input.value));
+  $("#rp-skip").addEventListener("click", () => revealAndAdvance(beat));
+  if (state.sttEnabled) $("#rp-mic").addEventListener("click", rpToggleRecord);
+}
+
+function beatPass(beat, text) {
+  const t = canon(text);
+  if (!beat.expect || beat.expect.length === 0) return t.length >= 2;  // open-ended reply
+  return beat.expect.some((k) => { const kk = canon(k); return kk && t.includes(kk); });
+}
+
+function handleResponse(text) {
+  text = (text || "").trim();
+  if (!text) return;
+  const beat = state.scenario.beats[state.beatIndex];
+  const pass = beatPass(beat, text);
+  addBubble("you" + (pass ? "" : " miss"), `<div class="who">You</div><div class="say">${text}</div>`);
+  if (pass) {
+    advanceBeat();
+  } else {
+    const fb = document.createElement("div");
+    fb.className = "rp-feedback";
+    fb.innerHTML = `Close! Try again, or use — <span class="model">“${beat.model}”</span> <span class="model-en">${beat.model_en || ""}</span>`;
+    $("#rp-chat").appendChild(fb);
+    fb.scrollIntoView({ behavior: "smooth", block: "end" });
+    const input = $("#rp-text"); if (input) { input.value = ""; input.focus(); }
+  }
+}
+
+function revealAndAdvance(beat) {
+  addBubble("system", `Model answer — <span style="color:var(--text)">“${beat.model}”</span>${beat.model_en ? `<br><span class="say-en">${beat.model_en}</span>` : ""}`);
+  advanceBeat();
+}
+
+function advanceBeat() {
+  // Lock the input during the transition so a fast second submit can't be scored
+  // against the next (not-yet-shown) beat, then advance when the line plays.
+  $("#rp-input").innerHTML = "";
+  setTimeout(() => {
+    state.beatIndex++;
+    if (state.beatIndex >= state.scenario.beats.length) finishScenario();
+    else playBeat();
+  }, 450);
+}
+
+function finishScenario() {
+  addBubble("system", `✅ <strong>${state.scenario.outro || "Scenario complete!"}</strong>`);
+  $("#rp-input").innerHTML = `<div class="rp-actions">
+    <button class="btn primary" id="rp-again">Try again</button>
+    <button class="btn ghost" id="rp-done">← Back to scenarios</button>
+  </div>`;
+  $("#rp-again").addEventListener("click", () => startScenario(state.scenario.id));
+  $("#rp-done").addEventListener("click", renderRoleplayHome);
+}
+
+/* Record a spoken reply and transcribe via the generic /api/stt endpoint. */
+async function rpToggleRecord() {
+  const btn = $("#rp-mic");
+  if (state.rpRecording && state.rpRecorder) { state.rpRecorder.stop(); return; }
+  let stream;
+  try { stream = await navigator.mediaDevices.getUserMedia({ audio: true }); }
+  catch (e) { addBubble("system", "🎤 Microphone access was blocked."); return; }
+  const rec = new MediaRecorder(stream);
+  state.rpRecorder = rec;
+  state.rpChunks = [];
+  rec.ondataavailable = (e) => { if (e.data && e.data.size) state.rpChunks.push(e.data); };
+  rec.onstop = async () => {
+    stream.getTracks().forEach((t) => t.stop());
+    state.rpRecording = false;
+    btn.classList.remove("listening");
+    btn.textContent = "🎤 Speak your reply";
+    const blob = new Blob(state.rpChunks, { type: rec.mimeType || "audio/webm" });
+    const ext = blob.type.includes("ogg") ? "ogg" : blob.type.includes("mp4") ? "mp4" : "webm";
+    const form = new FormData();
+    form.append("audio", blob, `reply.${ext}`);
+    form.append("language", state.scenario.language);
+    try {
+      const res = await fetch(`${API}/stt`, { method: "POST", body: form });
+      if (!res.ok) throw new Error(`${res.status}`);
+      const data = await res.json();
+      if (data.transcript) handleResponse(data.transcript);
+      else addBubble("system", "Didn't catch that — try again.");
+    } catch (e) {
+      addBubble("system", "Couldn't reach the speech service — you can type your reply instead.");
+    }
+  };
+  rec.start();
+  state.rpRecording = true;
+  btn.classList.add("listening");
+  btn.textContent = "⏹ Stop";
+}
+
+/* ------------------------------------------------------------------ */
 /* Progress                                                            */
 /* ------------------------------------------------------------------ */
 async function renderProgress() {
@@ -439,6 +618,8 @@ function init() {
   $("#speakHear").addEventListener("click", () => speak(state.speakCard.native, state.current.speech_lang));
   $("#speakStart").addEventListener("click", speakAction);
   $("#speakSkip").addEventListener("click", nextSpeak);
+
+  $("#rp-back").addEventListener("click", renderRoleplayHome);
 
   $("#writeCheck").addEventListener("click", checkWrite);
   $("#writeReveal").addEventListener("click", revealWrite);

@@ -1,0 +1,67 @@
+{
+  "id": "cv-interview-es",
+  "language": "es",
+  "speech_lang": "es-MX",
+  "title": "💼 Talk through your CV (interview)",
+  "level": "A2–B1",
+  "type": "interview",
+  "intro": "An interviewer walks you through your background — like an oral CV exam. Answer out loud in full sentences. There's no single right answer: say something real, then compare with the model.",
+  "partner": "Entrevistador",
+  "beats": [
+    {
+      "id": "name",
+      "say": ["Buenos días. Para empezar, ¿cómo se llama y de dónde es?", "Hola, cuénteme: ¿su nombre y de dónde viene?"],
+      "say_en": "To start — your name and where you're from?",
+      "hint": "Give your name and where you're from. (Me llamo… / Soy de…)",
+      "expect": ["me llamo", "soy", "mi nombre", "vengo de", "de "],
+      "model": "Me llamo ___ y soy de ___, en Estados Unidos.",
+      "model_en": "My name is ___ and I'm from ___, in the United States."
+    },
+    {
+      "id": "work",
+      "say": ["¿A qué se dedica actualmente?", "Hábleme de su trabajo actual."],
+      "say_en": "What do you do currently? / Tell me about your current job.",
+      "hint": "Say your job and one thing you do. (Trabajo como… / Me dedico a…)",
+      "expect": [],
+      "model": "Trabajo como ___. Me encargo de ___ y trabajo con ___.",
+      "model_en": "I work as a ___. I'm in charge of ___ and I work with ___."
+    },
+    {
+      "id": "experience",
+      "say": ["Cuénteme sobre su experiencia. ¿Dónde ha trabajado antes?", "¿Qué experiencia tiene?"],
+      "say_en": "Tell me about your experience — where have you worked before?",
+      "hint": "Mention past roles. (Antes trabajé en… / Tengo ___ años de experiencia)",
+      "expect": [],
+      "model": "Antes trabajé en ___ durante ___ años, donde aprendí a ___.",
+      "model_en": "Before, I worked at ___ for ___ years, where I learned to ___."
+    },
+    {
+      "id": "studies",
+      "say": ["¿Qué estudió?", "Hábleme de su formación académica."],
+      "say_en": "What did you study? / Tell me about your education.",
+      "hint": "Say what and where you studied. (Estudié… en…)",
+      "expect": [],
+      "model": "Estudié ___ en la universidad de ___.",
+      "model_en": "I studied ___ at the university of ___."
+    },
+    {
+      "id": "strengths",
+      "say": ["¿Cuáles diría que son sus fortalezas?", "¿Por qué deberíamos elegirlo a usted?"],
+      "say_en": "What are your strengths? / Why should we choose you?",
+      "hint": "Name 1–2 strengths with an example. (Soy… / Se me da bien…)",
+      "expect": [],
+      "model": "Soy organizado y aprendo rápido. Por ejemplo, ___.",
+      "model_en": "I'm organized and I learn quickly. For example, ___."
+    },
+    {
+      "id": "why",
+      "say": ["Por último, ¿por qué le interesa esto?", "¿Cuáles son sus planes para el futuro?"],
+      "say_en": "Finally, why are you interested? / What are your future plans?",
+      "hint": "Give a reason or a goal. (Me interesa porque… / Quiero…)",
+      "expect": [],
+      "model": "Me interesa porque quiero ___ y creo que puedo aportar ___.",
+      "model_en": "I'm interested because I want to ___ and I think I can contribute ___."
+    }
+  ],
+  "outro": "You just talked through your whole CV in Spanish. Do it a few times and it becomes automatic — exactly how the oral exams work. 💼"
+}
